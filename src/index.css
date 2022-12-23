@@ -103,4 +103,31 @@ header > nav > button {
 }
 
 
+/* 네비게이션 커스텀 */
 
+.shop-btt {
+  display: block;
+  position: relative;
+  line-height: 40px;
+}
+
+.product-list {
+  display: none;
+}
+.shop-btt:hover .product-list, .product-list:hover {
+  display: block;
+  position: absolute;
+  top: 40px;
+  background-color: #f2f2f2;
+  z-index: 20;
+}
+
+.product-item {
+  display: block;
+  padding: 0 10px;
+  border-top: solid 1px rgb(98, 94, 94);
+}
+
+.product-list > li:first-child a {
+border-top: none;
+}

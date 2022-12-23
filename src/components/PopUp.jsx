@@ -1,10 +1,10 @@
 import React from 'react';
-import { useAuthContext } from './context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function PopUp() {
 
   const { platforms, setPopUp, goToLogin } = useAuthContext();
-    // console.log(platforms)
+  
   return (
     <div className="popUp-Wrap">
       <div className='dimm' onClick={() => setPopUp(false)} ></div>

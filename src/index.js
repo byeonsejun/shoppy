@@ -10,6 +10,8 @@ import NewProduct from './pages/NewProduct';
 import MyCart from './pages/MyCart';
 import NotFound from './pages/NotFound';
 import ProtectedRoute from './pages/ProtectedRoute';
+import Products from './components/Products';
+import LocalWish from './pages/LocalWish';
 
 const router = createBrowserRouter([
   {
@@ -18,18 +20,36 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { index: true, path: '/', element: <Home /> },
-      { path: '/products', element: <AllProducts /> },
+      { path: '/shop', element: <AllProducts /> },
+      { path: '/shop/accessories', element: <Products /> },
+      { path: '/shop/men', element: <Products /> },
+      { path: '/shop/women', element: <Products /> },
+      
       {
-        path: '/products/new',
+        path: '/shop/new',
         element: (
           <ProtectedRoute requireAdmin={true} >
             <NewProduct />
           </ProtectedRoute>
         ),
       },
+
       {
-        path: '/products/:id',
+        path: '/shop/accessories/:id',
         element: <ProductDetail />,
+      },
+      {
+        path: '/shop/men/:id',
+        element: <ProductDetail />,
+      },
+      {
+        path: '/shop/women/:id',
+        element: <ProductDetail />,
+      },
+
+      {
+        path: '/wish',
+        element: <LocalWish />,
       },
       {
         path: '/carts',
@@ -45,7 +65,7 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  // </React.StrictMode>
 );

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { login, logout, onUserStateChange } from '../../api/firebase';
+import { login, logout, onUserStateChange } from '../api/firebase';
 
 import { BsGoogle } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
@@ -29,15 +29,15 @@ export function AuthContextProvider({ children }) {
 
   useEffect(() => {
     onUserStateChange(user => {
-      setUser(user);
       // console.log(user);
+      setUser(user);
     });
   }, []);
 
   return (
     <AuthContext.Provider 
       value={{
-        user, popUp, platforms,
+        user, popUp, platforms, uid: user && user.uid,
         setPopUp, login, logout, goToLogin
       }}
     >

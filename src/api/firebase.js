@@ -8,7 +8,7 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider
 } from "firebase/auth";
-import { get, getDatabase, ref, set } from "firebase/database";
+import { get, getDatabase, ref, remove, set } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -26,13 +26,12 @@ const database = getDatabase(app);
 
 export function login(main) {
   if (main === "google") {
-    console.log(main)
     signInWithPopup(auth, googleProvider).catch(console.error);
   } else if (main === "facebook") {
-    console.log(main)
     signInWithPopup(auth, facebookProvider).catch(console.error);
   }
   
+  // vx6UAhepvFXE1uTmdawKWGxnYzX2
 }
 
 export function logout() {
@@ -59,8 +58,8 @@ async function adminUser(user) {
 }
 
 export async function addNewProduct(product, image) {
-  const id = uuid()
-  return set(ref(database, `products/${id}`), {
+  const id = uuid();
+  return set(ref(database, `shop/${product.category}/${id}`), {
     ...product,
     id,
     price: parseInt(product.price),
@@ -70,10 +69,37 @@ export async function addNewProduct(product, image) {
 };
 
 export async function getProducts() {
-  return get(ref(database, 'products')).then((snapshot) => {
+  return get(ref(database, 'shop')).then((snapshot) => {
     if(snapshot.exists()) {
-      return Object.values(snapshot.val());
+      // console.log(snapshot.val())
+      // console.log(Object.keys(snapshot.val()))
+      // console.log(Object.values(snapshot.val()))
+      // console.log(Object.entries(snapshot.val()))
+      const copyAllItems = [...Object.values(snapshot.val())];
+      const allArrCategory = copyAllItems.map((category)=>{
+        return Object.values(category);
+      });
+      console.log(allArrCategory);
+      
+      return allArrCategory;
+      // return Object.values(snapshot.val());
     }
     return [];
   })
+}
+
+export async function getCart(userId) {
+  return get(ref(database, `carts/${userId}`))
+  .then((snapshot) => {
+    const items = snapshot.val() || {};
+    return Object.values(items);
+  });
+}
+
+export async function addOrUpdateToCart(userId, product) {
+  return set(ref(database, `carts/${userId}/${product.id}`), product);
+}
+
+export async function removeFromCart(userId, productId) {
+  return remove(ref(database, `carts/${userId}/${productId}`));
 }
