@@ -18,7 +18,7 @@ export default function ProductDetail() {
   const [selected, setSelected] = useState(options && options[0]);
   const handleSelect = (e) => setSelected(e.target.value);
   const handleClick = (e) => {
-    // 여기서 장바구니에 추가하면 됨!
+    // 여기에서 장바구니에 추가하면 됨!
     if(user === null) {
       console.log("return");
       setPopUp(true);

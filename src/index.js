@@ -21,9 +21,9 @@ const router = createBrowserRouter([
     children: [
       { index: true, path: '/', element: <Home /> },
       { path: '/shop', element: <AllProducts /> },
-      { path: '/shop/accessories', element: <Products /> },
-      { path: '/shop/men', element: <Products /> },
-      { path: '/shop/women', element: <Products /> },
+      { path: '/shop/OUTER', element: <Products /> },
+      { path: '/shop/DENIM', element: <Products /> },
+      { path: '/shop/SHOES', element: <Products /> },
       
       {
         path: '/shop/new',
@@ -35,15 +35,15 @@ const router = createBrowserRouter([
       },
 
       {
-        path: '/shop/accessories/:id',
+        path: '/shop/OUTER/:id',
         element: <ProductDetail />,
       },
       {
-        path: '/shop/men/:id',
+        path: '/shop/DENIM/:id',
         element: <ProductDetail />,
       },
       {
-        path: '/shop/women/:id',
+        path: '/shop/SHOES/:id',
         element: <ProductDetail />,
       },
 

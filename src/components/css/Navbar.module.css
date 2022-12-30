@@ -1,0 +1,101 @@
+header {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  margin: 0 auto;
+  width: 100%;
+  height: 50px;
+  max-width: 1920px;
+}
+
+nav,
+h1 {
+  flex: 1;
+  display: flex;
+}
+
+h1 {
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+h1 a {
+  display: block;
+  width: 100px;
+  height: 19.3px;
+}
+
+h1 a::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 19.3px;
+  background-image: url(https://black-up.kr/web/upload/131/image/logoB.svg);
+}
+
+.shopList {
+  flex-direction: column;
+  justify-content: space-around;
+  /* align-items: center; */
+}
+
+.shopBox {
+  width: 40px;
+  line-height: 50px;
+  text-transform: uppercase;
+  cursor: default;
+  font-size: 14px;
+}
+
+
+.productList {
+  display: none;
+  position: absolute;
+  top: 45px;
+  background-color: #fff;
+  z-index: 20;
+  border: 1px solid #777;
+  padding: 0.8rem;
+  white-space: nowrap;
+}
+.shopBox:hover .productList, .productList:hover {
+  display: block;
+}
+
+.productItem {
+  display: block;
+  margin: 0 0 5px 0;
+  line-height: 18px;
+
+}
+.productItem a {
+  display: block;
+  font-size: 12px;
+}
+.productItem a:hover {
+  text-decoration: underline;
+}
+
+.navMenu {
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  font-size: 14px;
+}
+
+.loginButton {
+  border-radius: 0.125rem;
+  background-color: black;
+  color: white;
+  padding: 0.5rem 1rem;
+  opacity: 1;
+}
+
+.loginButton:hover {
+  filter: brightness(50)
+}
+

@@ -4,101 +4,65 @@ import useProducts from "../hooks/useProducts";
 import { useLocation } from "react-router-dom";
 import PageNav from "./ui/PageNav";
 
+import styles from "./css/Products.module.css";
+import { sortSelectFn } from './js/product';
+
 export default function Products() {
   const {
     productsQuery: { isLoading, error, data: products },
   } = useProducts();
 
   const [nowProducts, setNowProducts] = useState(null);
-  const [sortSelect] = useState(["Select", "Low Price", "High Price"]);
+  const [sortSelect] = useState(["진열방식", "낮은가격", "높은가격"]);
   const [selected, setSelected] = useState("");
 
   const location = useLocation();
-  let sliceUrl = location.pathname.split("/")[2];
   let tabUrl = location.pathname.split("/")[1];
+  let sliceUrl = location.pathname.split("/")[2];
   let productType;
-
+  
   function productTypeFn(sliceUrl) {
-    switch (sliceUrl) {
-      case "accessories":
-        productType = 0;
-        break;
-      case "men":
-        productType = 1;
-        break;
-      case "women":
-        productType = 2;
-        break;
-      default:
-        productType = 10;
-    }
-    console.log(productType);
-    if ((tabUrl = "shop" && 10 > productType)) {
-      console.log("상품 구체 페이지");
-      products && setNowProducts([...products[productType]]);
-    } else if ((tabUrl = "shop" && productType === 10)) {
-      console.log("상품 전체 페이지");
-      let allArr = [];
-      products &&
-        products.map((product) => 
-        product.map((item) => allArr.push(item) ) );
-      allArr.reverse();
-      products && setNowProducts(allArr);
+    if(tabUrl === "shop"){
+      switch (sliceUrl) {
+        case "OUTER":
+          productType = 1;
+          break;
+        case "DENIM":
+          productType = 0;
+          break;
+        case "SHOES":
+          productType = 2;
+          break;
+        default:
+          productType = 10; // 전체 상품 보여주기 /shop
+      }
+      console.log(productType);
+      if ((tabUrl = "shop" && 10 > productType)) {
+        console.log("상품 구체 페이지");
+        products && setNowProducts([...products[productType]]);
+      } else if ((tabUrl = "shop" && productType === 10)) {
+        console.log("상품 전체 페이지");
+        let allArr = [];
+        products &&
+          products.map((product) => 
+          product.map((item) => allArr.push(item) ) );
+        // allArr.reverse();
+        products && setNowProducts(allArr);
+        console.log(allArr)
+      }
+    } else { // shop/ 이 아닐경우 Ex) 메인 페이지
+      console.log("메인 홈 페이지");
     }
   }
 
-  let [wishFlag, setWishFlag] = useState(
-    JSON.parse(localStorage.getItem("wishItem"))
-  );
-
+  // localStorage 셋팅
   let myWish = JSON.parse(localStorage.getItem("wishItem"));
   myWish === null && localStorage.setItem("wishItem", JSON.stringify([]));
 
-  function getWishItem(product) {
-    // localStorage.setItem("wishItem", JSON.stringify([product]));
-    let myWish = JSON.parse(localStorage.getItem("wishItem"));
-    // console.log(product) // 전달받은 정보
-    // console.log(myWish) // 로컬스토리지 정보
-
-    const wishResult = myWish.find((item) => String(item.id) === product.id);
-    // console.log(wishResult)
-    if (wishResult === undefined) {
-      // 체크되지 않은 위시 클릭시
-      myWish.push(product);
-      localStorage.setItem("wishItem", JSON.stringify(myWish));
-    } else {
-      // 이미 체크된 위시 클릭시
-      myWish = myWish.filter((item) => item.id !== product.id);
-      localStorage.setItem("wishItem", JSON.stringify(myWish));
-    }
-    setWishFlag(myWish);
-  }
-
-  const sample2 = (e) => {
-    switch (e.target.value) {
-      case "Low Price":
-        console.log("Low Price!!!");
-        const row = nowProducts.sort(function (a, b) {
-          return a.price - b.price;
-        });
-        setNowProducts(row);
-        break;
-      case "High Price":
-        console.log("High Price!!!");
-        const high = nowProducts.sort(function (a, b) {
-          return b.price - a.price;
-        });
-        setNowProducts(high);
-        break;
-      default:
-        console.log("Select!!!");
-    }
-    setSelected(e.target.value);
-  };
-
   useEffect(() => {
-    setSelected("Select");
+    setSelected("진열방식");
     productTypeFn(sliceUrl);
+    // console.log(nowProducts);
   }, [products, sliceUrl]);
 
   return (
@@ -106,14 +70,17 @@ export default function Products() {
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <PageNav sliceUrl={sliceUrl} />
-      <div className="text-right">
-        <label className="text-brand font-bold" htmlFor="select">
-          정렬:
-        </label>
+      <div className={styles.sortBox}>
+        <label className={styles.label} htmlFor="select"></label>
         <select
           id="select"
-          className="p-2 m-4 flex-1 border-2 border-dashed border-brand outline-none"
-          onChange={sample2}
+          className={styles.select}
+          onChange={(e) => {
+            const selectResult = sortSelectFn(e,nowProducts)
+            console.log(selectResult)
+            selectResult[0] && setNowProducts(selectResult[0]);
+            selectResult[0] && setSelected(selectResult[1]);
+          }}
           value={selected}
         >
           {sortSelect &&
@@ -122,16 +89,13 @@ export default function Products() {
             ))}
         </select>
       </div>
-
-      <ul className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+      <ul className={styles.ul}>
         {nowProducts &&
           nowProducts.map((product) => {
             return (
               <ProductCard
                 key={product.id}
                 product={product}
-                getWishItem={getWishItem}
-                wishFlag={wishFlag}
               />
             );
           })}

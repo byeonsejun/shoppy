@@ -11,9 +11,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   @apply flex flex-col items-center;
 }
+img {
+  max-width: 100%;
+  border: 0;
+  vertical-align: middle;
+}
 
 #root {
-  @apply w-full max-w-screen-2xl;
+  width: 100%;
+  max-width: 1920px;
+  padding-top: 50px;
+  /* height: 5000px; */
 }
 
 code {
@@ -25,8 +33,13 @@ input {
   @apply p-4 outline-none border border-gray-300 my-1
 }
 
-header > nav > button {
-  @apply bg-brand text-white py-2 px-4 rounded-sm hover:brightness-110
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
 }
 
 .dimm {
@@ -38,96 +51,113 @@ header > nav > button {
   z-index: 10;
   background: rgba(0, 0, 0, .8);
 }
-.modal_close {
-  cursor: pointer;
-  position: fixed;
-  top: 5px;
-  right: 5px;
-  width: 48px;
-  height: 48px;
-  display: block;
-  background-position: 10px center;
-  overflow: hidden;
-  font-size: 48px;
-  line-height: 1;
-  text-align: center;
-  z-index: 1050;
-  color: rgb(0, 0, 0);
-}
 
-.popUp {
-  max-width: 500px;
-  min-width: 360px;
-  width: 100%;
-  height: 500px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  background-color: #f2f2f2;
-  border: 2px solid #727272;
-  z-index: 20;
-}
-
-.popUp h2 {
-  margin-top: 3rem;
-  font-size: 1.5rem;
-}
-
-.sign-select {
-  margin-top: 75px;
-}
-
-.sign-select > div {
-  display: block;
-  margin: 25px;
-  line-height: 50px;
-  color: #f2f2f2;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.sign-select > div > span {
-  margin-right: 5px;
-  color: white;
-}
-
-.sign-select .google {
+/* 로그인 관련  */
+.google_login_btt {
   background-color: #1b1b1b;
 }
-
-.sign-select .facebook {
+.facebook_login_btt {
   background-color: #5371b1;
 }
 
 
-/* 네비게이션 커스텀 */
+/* 스와이퍼 관련 */
 
-.shop-btt {
-  display: block;
+section .swiper-pagination-fraction {
+  width: 35px;
   position: relative;
-  line-height: 40px;
+  bottom: -3px;
+  left: -30px;
+  display: inline-block;
+  font-weight: bold;
 }
 
-.product-list {
-  display: none;
+section .swiper-button-next , 
+section .swiper-button-prev {
+  color: black;
+  display: inline-block;
+  width: 13.5px;
+  height: 22px;
+  text-align: center;
+  position: relative;
+  bottom: -3px;
+  top: auto;
+  left: auto;
+  right: auto;
 }
-.shop-btt:hover .product-list, .product-list:hover {
-  display: block;
+
+section .swiper-button-next:after, 
+section .swiper-button-prev:after {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+/* 메인베너 관련 */
+.mainSlider {
+  text-align: end;
+}
+.mainBanner .swiper-button-next {
+  right: 50px;
+}
+.mainBanner .swiper-button-prev {
+  right: 75px;
+}
+
+/* slideProduct.jsx 관련 */
+.product_slide_wrap {
+  padding: 0 25px;
+  margin-bottom: 320px;
+}
+section.product_slide_wrap .swiper {
+  padding-top: 50px;
+}
+
+section.product_slide_wrap .swiper-button-next , 
+section.product_slide_wrap .swiper-button-prev {
+  /* width: 13.5px;
+  height: 22px; */
   position: absolute;
-  top: 40px;
-  background-color: #f2f2f2;
-  z-index: 20;
+  top: 30px;
+  bottom: auto;
+  left: auto;
+  right: auto;
 }
 
-.product-item {
-  display: block;
-  padding: 0 10px;
-  border-top: solid 1px rgb(98, 94, 94);
+section.product_slide_wrap .swiper-button-next {
+  right: 10px;
+}
+section.product_slide_wrap .swiper-button-prev {
+  right: 35px;
 }
 
-.product-list > li:first-child a {
-border-top: none;
+
+/* categorySwiper.jsx  */
+section.category_slide {
+  width: 100%;
+  padding: 0 25px;
+  margin-bottom: 320px;
+}
+
+.category_swiper_inner {
+  width: 100%;
+  max-width: 1352px;
+  margin: 0 auto;
+}
+
+section .categorySwiper .swiper-button-next , 
+section .categorySwiper .swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  left: auto;
+  right: auto;
+}
+
+
+section .categorySwiper .swiper-button-prev {
+  left: 0px;
+}
+
+section .categorySwiper .swiper-button-next {
+  right: 0px;
 }

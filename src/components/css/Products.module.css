@@ -1,0 +1,29 @@
+.sortBox {
+  text-align: right;
+}
+
+.label {
+  color: black;
+  font-weight: 700;
+}
+
+.select {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  padding: 0.5rem;
+  color: black;
+  border-width: 2px;
+  border-color: black;
+  border-style: dashed;
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.ul {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* 768 테블릿 grid-template-columns: repeat(3, minmax(0, 1fr)); */
+  /* 모바일  grid-template-columns: repeat(1, minmax(0, 1fr)); */
+  gap: 3rem 1rem;
+  padding: 1rem;
+}

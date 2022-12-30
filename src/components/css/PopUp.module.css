@@ -1,0 +1,56 @@
+.modal_close {
+  cursor: pointer;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  width: 48px;
+  height: 48px;
+  display: block;
+  background-position: 10px center;
+  overflow: hidden;
+  font-size: 48px;
+  line-height: 1;
+  text-align: center;
+  z-index: 1050;
+  color: rgb(0, 0, 0);
+}
+
+.popUp {
+  max-width: 500px;
+  min-width: 360px;
+  width: 100%;
+  height: 300px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: #f2f2f2;
+  border: 2px solid #727272;
+  z-index: 20;
+}
+
+.popUp h2 {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+}
+
+.signSelect {
+  margin-top: 55px;
+}
+
+.signSelect > div {
+  display: block;
+  margin: 25px;
+  line-height: 50px;
+  color: #f2f2f2;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signSelect > div > span {
+  margin-right: 5px;
+  color: white;
+}
+

@@ -9,7 +9,7 @@ export default function NewProduct() {
   const [isUploading, setIsUploading] = useState(false);
   const [success, setSuccess] = useState();
   const [categorys] = useState([
-    "men","women","accessories"
+    "OUTER","DENIM","SHOES"
   ])
 
   const { addProduct } = useProducts();

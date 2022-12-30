@@ -8,12 +8,33 @@ export default function CartStatus() {
   } = useCart();
   // console.log(products)
   return (
-    <div className="relative">
-      <AiOutlineShoppingCart className="text-4xl" />
+    <div 
+      style={{ position: "relative" }}
+      title="CART"
+    >
+      <AiOutlineShoppingCart
+        style={{ 
+          fontSize: "2.25rem", 
+          lineHeight: "2.5rem" 
+        }}
+      />
       {products && (
-        <p className="w-6 h-6 text-center bg-brand text-white font-bold rounded-full absolute -top-1 -right-2 ">
+        <span
+          style={{
+            position: "absolute",
+            top: "-0.25rem",
+            right: "-0.5rem",
+            width: "1.5rem",
+            lineHeight: "1.5rem",
+            borderRadius: "9999px",
+            backgroundColor: "black",
+            textAlign: "center",
+            fontWeight: "700",
+            color: "white",
+          }}
+        >
           {products.length}
-        </p>
+        </span>
       )}
     </div>
   );

@@ -1,0 +1,47 @@
+.cardBox {
+  position: relative;
+}
+
+.cardWishBtt {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 3.5rem;
+  z-index: 10;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.cardWishBtt img {
+  width: 15px;
+  height: 15px;
+}
+
+.li {
+  overflow: hidden;
+  width: 100%;
+  max-width: 452.5px;
+}
+
+.productImg {
+  width: 100%;
+  max-width: 452.5px;
+  cursor: pointer;
+}
+
+.textBox {
+  margin-top: 0.5rem;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+.h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.textBox span {
+  margin-bottom: 0.5rem;
+  color: gray;
+}

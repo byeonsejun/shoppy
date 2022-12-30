@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./css/ProductCard.module.css";
+import { getWishItem } from './js/product';
 
-export default function ProductCard({ product, getWishItem, wishFlag }) {
+export default function ProductCard({ product }) {
+  // console.log(product)
   const navigate = useNavigate();
   const [nowResult, setNowResult] = useState(null);
 
@@ -12,32 +15,42 @@ export default function ProductCard({ product, getWishItem, wishFlag }) {
     // console.log(itemResult); // 현재의 리설트값
     // 로컬스토리지에 있으면 true 없으면 false
     setNowResult(itemResult);
-  }
-  
-  useEffect(()=> {
+  };
+
+  let [wishFlag, setWishFlag] = useState(
+    JSON.parse(localStorage.getItem("wishItem"))
+  );
+
+
+  useEffect(() => {
     findWish();
-  },[wishFlag]);
+  }, [wishFlag]);
 
   return (
-    <div className='relative'>
-      <span 
-        className='p-1 bg-white text-cyan-50 absolute z-10 right-2 top-2 cursor-pointer'
-        onClick={() => getWishItem(product)}
+    <div className={styles.cardBox}>
+      <li
+        className={styles.li}
       >
-        { nowResult ? "❤️" : "🖤" }
-      </span>
-      <li 
-        className='rounded-lg shadow-md overflow-hidden cursor-pointer transition-all hover:scale-105 '
-        onClick={()=> {navigate(`/shop/${product.category}/${product.id}`, { state: { product } })}}
-      >
-        <img className='w-full' src={product.image} alt={product.title} />
-        <div className='mt-2 px-2 text-lg '>
-          <h3 className='truncate'>{product.title}</h3>
-          <p>{`₩${product.price}`}</p>
+        <img 
+          className={styles.productImg} 
+          src={product.image} alt={product.title} 
+          onClick={() => {
+            navigate(`/shop/${product.category}/${product.id}`, {
+              state: { product },
+            });
+          }}
+        />
+        <div className={styles.textBox}>
+          <h3 className={styles.h3}>{product.title}</h3>
+          <p>{`${product.price}원`}</p>
+          <span>{product.description}</span>
         </div>
-        <p className='mb-2 px-2 text-gray-600'>{product.category}</p>
       </li>
+      <span className={styles.cardWishBtt} onClick={() => setWishFlag(getWishItem(product))}>
+        { nowResult ? 
+        <img src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1672206344/before_wish_icon_ex3avf.png" alt="wish_after" /> : 
+        <img src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1672206341/after_wish_icon_exq07b.png" alt="wish_before" /> }
+      </span>
     </div>
   );
 }
-
