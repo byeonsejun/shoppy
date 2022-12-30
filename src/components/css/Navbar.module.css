@@ -35,6 +35,7 @@ h1 a::before {
   width: 100px;
   height: 19.3px;
   background-image: url(https://black-up.kr/web/upload/131/image/logoB.svg);
+  background-repeat: no-repeat;
 }
 
 .shopList {
