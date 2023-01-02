@@ -10,9 +10,11 @@ export default function ProductCard({ product }) {
 
   const findWish = () => {
     let myWishs = JSON.parse(localStorage.getItem("wishItem"));
-    const itemResult = myWishs.some((myWish) => myWish.id === product.id);
+    myWishs === null && localStorage.setItem("wishItem", JSON.stringify([]));
+    const itemResult = myWishs && myWishs.some((myWish) => myWish.id === product.id);
     // console.log(product.id); //현재의 id
     // console.log(itemResult); // 현재의 리설트값
+    // console.log(myWishs)
     // 로컬스토리지에 있으면 true 없으면 false
     setNowResult(itemResult);
   };
