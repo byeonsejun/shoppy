@@ -60,10 +60,24 @@ img {
   .iconBox {
     flex-direction: column;
     justify-content: center;
-    gap: 0.3rem;
   }
   .icon:last-child {
     margin-top: 0.5rem;
+  }
+
+  .title {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .option {
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+
+  .price {
+    font-size: 1rem;
+    line-height: 1.25rem;
   }
 
 }

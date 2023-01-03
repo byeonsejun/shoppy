@@ -25,7 +25,7 @@ export default function CartItem({
         <div className={styles.productInfo}>
           <p className={styles.title}>{title}</p>
           <p className={styles.option}>[옵션: {option}]</p>
-          <p>{price}원</p>
+          <p className={styles.price}>{price}원</p>
         </div>
         <div className={styles.iconBox}>
           <AiOutlineMinusSquare className={styles.icon} onClick={handleMinus} />
