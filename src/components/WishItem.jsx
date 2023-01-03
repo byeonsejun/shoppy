@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import styles from "./css/WishItem.module.css";
+
 export default function WishItem({
   product,
   product: { id, image, title, price, category },
@@ -12,24 +14,21 @@ export default function WishItem({
   }
 
   return (
-    <li className="flex justify-between my-2 items-center ">
+    <li className={styles.item}>
       <img
         src={image}
         alt={title}
-        className="w-24 rounded-lg md:w-48 cursor-pointer"
+        className={styles.wishImg}
         onClick={() => goToDetail(category, id)}
       />
-      <div className="flex-1 flex justify-between ml-4">
-        <div className="basis-3/5">
-          <p className="text-md  text-gray-700">{category}</p>
-          <p className="text-lg">{title}</p>
-          <p>￦{price}</p>
+      <div className={styles.wishInfoBox}>
+        <div className={styles.wishInfoBoxInner}>
+          <p className={styles.category}>{category}</p>
+          <p className={styles.title}>{title}</p>
+          <p>{price}원</p>
         </div>
       </div>
-      <span 
-        className="font-bold cursor-pointer" 
-        onClick={() => deleteWish(id)}
-      >
+      <span className={styles.cancel} onClick={() => deleteWish(id)}>
         X
       </span>
     </li>

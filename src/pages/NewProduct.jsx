@@ -3,21 +3,21 @@ import { uploadImage } from "../api/uploader";
 import Button from "../components/ui/Button";
 import useProducts from "../hooks/useProducts";
 
+import styles from "./css/NewProduct.module.css";
+
 export default function NewProduct() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
   const [isUploading, setIsUploading] = useState(false);
   const [success, setSuccess] = useState();
-  const [categorys] = useState([
-    "OUTER","DENIM","SHOES"
-  ])
+  const [categorys] = useState(["OUTER", "DENIM", "SHOES"]);
 
   const { addProduct } = useProducts();
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    console.log(name)
-    console.log(value)
+    console.log(name);
+    console.log(value);
     if (name === "file") {
       setFile(files && files[0]);
       return;
@@ -35,6 +35,7 @@ export default function NewProduct() {
           {
             onSuccess: () => {
               setSuccess("성공적으로 제품이 추가되었습니다.");
+              e.target.reset();
               setTimeout(() => {
                 setSuccess(null);
               }, 4000);
@@ -46,17 +47,11 @@ export default function NewProduct() {
   };
 
   return (
-    <section className="w-full text-center">
-      <h2 className="text-2xl font-bold my-4">새로운 제품 등록</h2>
-      {success && <p className="my-2">✅ {success}</p>}
-      {file && (
-        <img
-          className="w-96 mx-auto mb-2"
-          src={URL.createObjectURL(file)}
-          alt="local file"
-        />
-      )}
-      <form className="flex flex-col px-12" onSubmit={handleSubmit}>
+    <section className={styles.newProductSection}>
+      <h2>새로운 제품 등록</h2>
+      {success && <p className={styles.success}>✅ {success}</p>}
+      {file && <img src={URL.createObjectURL(file)} alt="local file" />}
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="file"
           accept="image/*"
@@ -80,29 +75,23 @@ export default function NewProduct() {
           required
           onChange={handleChange}
         />
-        {/* <input
-          type="text"
+        <select
+          className={styles.category}
           name="category"
-          value={product.category ?? ""}
-          placeholder="카테고리"
-          required
-          onChange={handleChange}
-        /> */}
-        <select 
-          name="category" 
           // value={product.category ?? ""}
           placeholder="카테고리"
           required
           onChange={handleChange}
         >
           <option value="">카테고리 선택</option>
-          {
-            categorys.map((category) => {
-              return <option key={category} value={category}>{category}</option>
-            })
-          }
+          {categorys.map((category) => {
+            return (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            );
+          })}
         </select>
-
         <input
           type="text"
           name="description"

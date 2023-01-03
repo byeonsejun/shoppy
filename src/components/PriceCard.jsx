@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
+import styles from "./css/PriceCard.module.css";
 
 export default function PriceCard({ text, price }) {
   return (
-    <div className='bg-gray-50 p-8 mx-2 rounded-2xl text-center text-lg md:text-xl'>
+    <div className={styles.priceCardWrap}>
       <p>{text}</p>
-      <p className='font-bold text-brand text-xl md:text-2xl'>￦{price}</p>
+      <p className={styles.price}>{price}원</p>
     </div>
   );
 }
-

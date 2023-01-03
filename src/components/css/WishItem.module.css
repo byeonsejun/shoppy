@@ -1,0 +1,48 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+  align-items: center;
+}
+
+.wishImg {
+  width: 12rem;
+  cursor: pointer;
+}
+
+.wishInfoBox {
+  display: flex;
+  flex: 1 1;
+  justify-content: space-between;
+  margin-left: 1rem;
+}
+
+.wishInfoBoxInner {
+  flex-basis: 90%;
+}
+
+.category {
+  color: black;
+}
+
+.title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.cancel {
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .wishImg {
+    width: 6rem;
+  }
+  .title {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+}

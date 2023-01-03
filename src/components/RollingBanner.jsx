@@ -12,7 +12,7 @@ export default function RollingBanner() {
   ]);
 
   return (
-    <section style={{ marginBottom: "320px" }}>
+    <section>
       <Swiper
         slidesPerView={1}
         // grabCursor={true}

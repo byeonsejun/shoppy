@@ -30,7 +30,7 @@
 
 .textBox {
   margin-top: 0.5rem;
-  padding: 0 0.5rem;
+  padding: 0 2rem 0 0.5rem;
   font-size: 1rem;
   line-height: 1.75rem;
 }
@@ -44,4 +44,17 @@
 .textBox span {
   margin-bottom: 0.5rem;
   color: gray;
+}
+
+@media (max-width: 1200px) {
+  .cardBox {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardWishBtt {
+    bottom: 2rem;
+  }
 }

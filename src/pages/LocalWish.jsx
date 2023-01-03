@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import WishItem from "../components/WishItem";
 
+import styles from "./css/LocalWish.module.css";
+
 export default function LocalWish() {
   const [myWishItem, setMyWishItem] = useState(
     JSON.parse(localStorage.getItem("wishItem"))
@@ -14,13 +16,13 @@ export default function LocalWish() {
   }
 
   return (
-    <section className="p-8 flex flex-col">
-      <p className="text-2xl text-center font-bold pb-4 border-b border-gray-300">
-        내가 찜한상품
-      </p>
-      {!hasWishs && <p>장바구니에 상품이 없습니다.</p>}
+    <section className={styles.wishSection}>
+      <h2 className={styles.wishSectionTitle}>
+        My Wish List
+      </h2>
+      {!hasWishs && <p>Wish List에 상품이 없습니다.</p>}
       {hasWishs && (
-        <ul className="border-b border-gray-300 mb-8 p-4 px-8">
+        <ul className={styles.wishSectionUl}>
           {myWishItem &&
             myWishItem.map((product) => {
               return (

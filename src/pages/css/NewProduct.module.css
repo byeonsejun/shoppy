@@ -1,0 +1,61 @@
+.newProductSection {
+  width: 100%;
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.newProductSection h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  margin: 1rem 3rem;
+  padding-bottom: 0.5rem;
+  border-bottom-width: 1px;
+  border-color: black;
+}
+
+.success {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    position: fixed;
+    width: 50vw;
+    left: 25vw;
+    top: 50px;
+}
+
+.newProductSection > img {
+  width: 30%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 3rem;
+}
+
+.form > input {
+  margin-bottom: 0.5rem;
+}
+
+.form > .category {
+  padding: 1rem 0;
+}
+
+
+@media (max-width: 768px) {
+  .newProductSection > img {
+    width: 50%;
+  }
+
+  .success {
+    width: 100vw;
+    left: 0vw;
+  }
+}

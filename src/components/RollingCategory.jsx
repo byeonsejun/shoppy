@@ -28,14 +28,22 @@ export default function RollingCategory() {
     <section className="category_slide">
       <div className="category_swiper_inner">
         <Swiper
-          // autoplay={{
-          //   delay: 3000,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
           loop={true}
-          slidesPerView={2}
           navigation={true}
           speed={1000}
+          slidesPerView={1}
+          breakpoints={{
+            768: {
+              slidesPerView: 1.3,
+            },
+            1024: {
+              slidesPerView: 2,
+            },
+          }}
           modules={[Autoplay, Navigation]}
           className="mySwiper categorySwiper"
         >

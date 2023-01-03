@@ -1,0 +1,69 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+img {
+  width: 12rem;
+  border-radius: 0.5rem;
+}
+
+.innerBox {
+  display: flex;
+  flex: 1 1;
+  justify-content: space-between;
+  margin-left: 1rem;
+}
+
+.productInfo {
+  flex-basis: 60%;
+}
+
+.title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.option {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  color: black;
+}
+
+.iconBox {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  color: rgb(100, 99, 99);
+  margin: 0 0.25rem;
+  cursor: pointer;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.icon:hover {
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .img {
+    width: 6rem;
+  }
+  .iconBox {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+  .icon:last-child {
+    margin-top: 0.5rem;
+  }
+
+}

@@ -1,0 +1,95 @@
+.h2 {
+  color: black;
+  text-transform: capitalize;
+  font-weight: 700;
+  margin: 1rem 3rem 0 3rem;
+}
+
+.section {
+  display: flex;
+  padding: 1rem;
+  flex-direction: row;
+}
+
+.imgBox {
+  width: 100%;
+  padding: 0 1rem;
+  flex-basis: 58%;
+}
+.imgBox > img {
+  width: 100%;
+}
+
+.selectBox {
+  width: 100%;
+  display: flex;
+  flex-basis: 42%;
+  padding: 1rem;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  padding: 0.5rem 0;
+}
+
+.price {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  padding: 0.5rem 0;
+  color: black;
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  padding: 1rem 0;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  color: black;
+  font-weight: 700;
+}
+
+.select {
+  flex: 1 1;
+  margin: 1rem;
+  border-width: 2px;
+  border-style: dashed;
+  border-color: black;
+  padding: 0.5rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.check {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0 ;
+  padding: 0.5rem;
+  color: white;
+  text-align: center;
+  justify-content: center;
+}
+.check svg {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
+
+
+
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+  }
+
+}

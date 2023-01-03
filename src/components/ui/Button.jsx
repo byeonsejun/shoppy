@@ -3,7 +3,12 @@ import React from 'react';
 export default function Button({ text, onClick }) {
   return (
     <button
-      className='bg-brand text-white py-2 px-4 rounded-sm hover:brightness-110'
+      style={{
+        backgroundColor: "black",
+        color: "white",
+        padding: "0.5rem 1rem",
+        borderRadius: "0.125rem",
+      }}
       onClick={onClick}
     >
       {text}

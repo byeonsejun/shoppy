@@ -1,0 +1,51 @@
+.section {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  padding-bottom: 1rem;
+  font-weight: 700;
+  text-align: center;
+  border-bottom-width: 1px;
+  border-color: black;
+}
+
+.notProduct {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.ul {
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  border-bottom-width: 1px;
+  border-color: black;
+}
+
+.bottomBox {
+  display: flex;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.5rem;
+}
+
+.shrink{
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .bottomBox {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .ul {
+    padding: 1rem 0.25rem;
+  }
+}

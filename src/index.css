@@ -2,14 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* html,
+body {
+  width: 100%;
+} */
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply flex flex-col items-center;
 }
 img {
   max-width: 100%;
@@ -17,20 +21,24 @@ img {
   vertical-align: middle;
 }
 
-#root {
-  width: 100%;
-  max-width: 1920px;
-  padding-top: 50px;
-  /* height: 5000px; */
-}
-
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 input {
-  @apply p-4 outline-none border border-gray-300 my-1
+  /* @apply p-4 outline-none border border-gray-300 my-1; */
+  padding: 1rem;
+  outline: none;
+  border: solid 1px gray;
+}
+
+#root {
+  width: 100%;
+  max-width: 1920px;
+  min-width: 360px;
+  padding-top: 50px;
+  margin: 0 auto;
 }
 
 .blind {
@@ -49,7 +57,11 @@ input {
   width: 100%;
   height: 100%;
   z-index: 10;
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+section {
+  margin-bottom: 320px;
 }
 
 /* 로그인 관련  */
@@ -59,7 +71,6 @@ input {
 .facebook_login_btt {
   background-color: #5371b1;
 }
-
 
 /* 스와이퍼 관련 */
 
@@ -72,7 +83,7 @@ section .swiper-pagination-fraction {
   font-weight: bold;
 }
 
-section .swiper-button-next , 
+section .swiper-button-next,
 section .swiper-button-prev {
   color: black;
   display: inline-block;
@@ -86,7 +97,7 @@ section .swiper-button-prev {
   right: auto;
 }
 
-section .swiper-button-next:after, 
+section .swiper-button-next:after,
 section .swiper-button-prev:after {
   font-size: 20px;
   font-weight: bolder;
@@ -106,13 +117,12 @@ section .swiper-button-prev:after {
 /* slideProduct.jsx 관련 */
 .product_slide_wrap {
   padding: 0 25px;
-  margin-bottom: 320px;
 }
 section.product_slide_wrap .swiper {
   padding-top: 50px;
 }
 
-section.product_slide_wrap .swiper-button-next , 
+section.product_slide_wrap .swiper-button-next,
 section.product_slide_wrap .swiper-button-prev {
   /* width: 13.5px;
   height: 22px; */
@@ -130,12 +140,10 @@ section.product_slide_wrap .swiper-button-prev {
   right: 35px;
 }
 
-
 /* categorySwiper.jsx  */
 section.category_slide {
   width: 100%;
   padding: 0 25px;
-  margin-bottom: 320px;
 }
 
 .category_swiper_inner {
@@ -144,7 +152,7 @@ section.category_slide {
   margin: 0 auto;
 }
 
-section .categorySwiper .swiper-button-next , 
+section .categorySwiper .swiper-button-next,
 section .categorySwiper .swiper-button-prev {
   position: absolute;
   top: 50%;
@@ -153,11 +161,23 @@ section .categorySwiper .swiper-button-prev {
   right: auto;
 }
 
-
 section .categorySwiper .swiper-button-prev {
   left: 0px;
 }
 
 section .categorySwiper .swiper-button-next {
   right: 0px;
+}
+
+
+@media (max-width: 1200px) {
+  section {
+    margin-bottom: 110px;
+  }
+}
+
+@media (max-width: 768px) { 
+  .product_slide_wrap, section.category_slide {
+    padding: 0 8px;
+  }
 }

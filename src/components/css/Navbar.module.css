@@ -1,10 +1,8 @@
-header {
+.header {
   position: fixed;
   top: 0;
   z-index: 100;
   background-color: white;
-  display: flex;
-  justify-content: space-between;
   padding: 0 25px;
   margin: 0 auto;
   width: 100%;
@@ -12,24 +10,66 @@ header {
   max-width: 1920px;
 }
 
+.header > button {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+  position: absolute;
+  top: 0.6rem;
+  overflow: hidden;
+  outline: none;
+  display: none;
+}
+
+.header > button > span{
+  display: block;
+  height: 2px;
+  background: #1a1a1a;
+  margin: 5px 0;
+  transition: all 0.2s;
+  transform-origin: left center;
+}
+
+button.mbMenuT span:nth-child(1) {
+  transform: rotateZ(45deg) translateY(-5px);
+  background: #333;
+}
+button.mbMenuT span:nth-child(2) {
+  transform: translateX(20px);
+  opacity: 0;
+  background: #333;
+}
+button.mbMenuT span:nth-child(3) {
+  transform: rotateZ(-45deg) translateY(5px);
+  background: #333;
+}
+
+
+.header > div {
+  display: flex;
+  justify-content: space-between;
+}
+
 nav,
-h1 {
+.logo {
   flex: 1;
   display: flex;
 }
 
-h1 {
+.logo {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
-h1 a {
+.logo a {
   display: block;
   width: 100px;
   height: 19.3px;
 }
 
-h1 a::before {
+.logo a::before {
   content: "";
   position: absolute;
   width: 100px;
@@ -52,7 +92,6 @@ h1 a::before {
   font-size: 14px;
 }
 
-
 .productList {
   display: none;
   position: absolute;
@@ -63,7 +102,8 @@ h1 a::before {
   padding: 0.8rem;
   white-space: nowrap;
 }
-.shopBox:hover .productList, .productList:hover {
+.shopBox:hover .productList,
+.productList:hover {
   display: block;
 }
 
@@ -71,7 +111,6 @@ h1 a::before {
   display: block;
   margin: 0 0 5px 0;
   line-height: 18px;
-
 }
 .productItem a {
   display: block;
@@ -97,6 +136,78 @@ h1 a::before {
 }
 
 .loginButton:hover {
-  filter: brightness(50)
+  filter: brightness(50);
 }
 
+@media (max-width: 768px) {
+  .header {
+    border-bottom: solid 1px rgb(211, 206, 206);
+    padding: 0 8px;
+  }
+  .header > button {
+    display: block;
+  }
+
+  .logo {
+    position: fixed;
+    top: 15px;
+    left: calc(50% - 50px);
+    visibility: visible;
+  }
+
+  .header > div {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 80vw;
+    height: 100vh;
+    padding: 1.5rem;
+    transition: all 0.5s;
+    visibility: hidden;
+  }
+  .header > div nav {
+    position: absolute;
+    display: none;
+  }
+
+  .header > div.mbMenuT {
+    background-color: white;
+    visibility: visible;
+  }
+  .header > div.mbMenuT nav {
+    display: flex;
+  }
+
+  nav.shopList {
+    top: 7rem;
+  }
+
+  .productList {
+    display: block;
+    padding: 0 0 0 1rem;
+    border: none;
+    background: none;
+  }
+
+  .productItem {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+
+  nav.navMenu {
+    top: 4rem;
+    right: 1.5rem;
+  }
+
+  nav.navMenu > div,
+  nav.navMenu > button {
+    position: absolute;
+    top: -3.5rem;
+  }
+  nav.navMenu > div {
+    top: -3rem;
+    right: 6rem;
+    width: 40px;
+  }
+}

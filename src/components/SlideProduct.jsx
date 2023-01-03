@@ -5,8 +5,8 @@ import { productSlideResult } from "./js/product";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Autoplay, Navigation } from "swiper";
-import ProductCard from './ProductCard';
+import { Navigation } from "swiper";
+import ProductCard from "./ProductCard";
 
 export default function SlideProduct({ info }) {
   const {
@@ -20,32 +20,37 @@ export default function SlideProduct({ info }) {
     setItems(productSlideResult(info, products));
   }, [products]);
 
-  
-
   return (
     <section className={`product_slide_wrap ${info}`}>
       <h3>{info} LIST</h3>
       <Swiper
-        // autoplay={{
-        //   delay: 5000,
-        //   disableOnInteraction: false,
-        // }}
-        // loop={true}
         grabCursor={true}
-        slidesPerView={4.3}
+        slidesPerView={1.2}
         spaceBetween={20}
         navigation={true}
         speed={1000}
-        modules={[Autoplay, Navigation]}
+        breakpoints={{
+          320: {
+            slidesPerView: 1.2,
+          },
+          768: {
+            slidesPerView: 2.5,
+          },
+          1200: {
+            slidesPerView: 4.3,
+          },
+        }}
+        modules={[Navigation]}
         className={`mySwiper ${info}_swiper`}
       >
-        {items && items.map((item) => {
-          return (
-            <SwiperSlide key={item.id}>
-              <ProductCard product={item} />
-            </SwiperSlide>
-          );
-        })}
+        {items &&
+          items.map((item) => {
+            return (
+              <SwiperSlide key={item.id}>
+                <ProductCard product={item} />
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </section>
   );

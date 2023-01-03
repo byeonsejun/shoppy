@@ -5,6 +5,10 @@ import Button from '../components/ui/Button';
 import { useAuthContext } from '../context/AuthContext';
 import useCart from '../hooks/useCart';
 
+import { BsFillCartCheckFill } from "react-icons/bs";
+
+import styles from "./css/ProductDetail.module.css";
+
 
 export default function ProductDetail() {
   const { user, popUp, setPopUp } = useAuthContext();
@@ -35,24 +39,24 @@ export default function ProductDetail() {
 
   return (
     <>
-      <p className='mx-12 mt-4 text-gray-700 font-bold capitalize  '>{category}</p>
-      <section className='flex flex-col p-4 md:flex-row md:flex-wrap'>
-        <div className='w-full px-4 md:basis-7/12'>
-          <img className='w-full' src={image} alt={title} />
+      <h2 className={styles.h2}>{category}</h2>
+      <section className={styles.section}>
+        <div className={styles.imgBox}>
+          <img src={image} alt={title} />
         </div>
-        <div className='w-full flex flex-col p-4 md:basis-5/12 '>
-          <h2 className='text-3xl font-bold py-2'>{title}</h2>
-          <p className='text-2xl font-bold py-2 border-b border-gray-400'>
-            ₩{price}
+        <div className={styles.selectBox}>
+          <h3 className={styles.title}>{title}</h3>
+          <p className={styles.price}>
+            {price}원
           </p>
-          <p className='py-4 text-lg'>{description}</p>
-          <div className='flex items-center'>
-            <label className='text-brand font-bold' htmlFor='select'>
+          <p className={styles.description}>{description}</p>
+          <div className={styles.option}>
+            <label className={styles.label} htmlFor='select'>
               옵션:
             </label>
             <select
               id='select'
-              className='p-2 m-4 flex-1 border-2 border-dashed border-brand outline-none'
+              className={styles.select}
               onChange={handleSelect}
               value={selected}
             >
@@ -62,11 +66,10 @@ export default function ProductDetail() {
                 ))}
             </select>
           </div>
-          { success && <p className='my-2'>✅ {success}</p>}
+          { success && <p className={styles.check}><BsFillCartCheckFill /> {success}</p>}
           <Button text='장바구니에 추가' onClick={handleClick} />
           { popUp && <PopUp /> }
         </div>
-        
       </section>
     </>
   );

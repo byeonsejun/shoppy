@@ -1,0 +1,30 @@
+.priceCardWrap {
+  background-color: black;
+  color: white;
+  padding: 2rem;
+  margin: 0px 0.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.price {
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+
+@media (max-width: 768px) {
+  .priceCardWrap {
+    padding: 0;
+    background-color: unset;
+    color: black;
+  }
+
+  .price {
+    color: black;
+  }
+}

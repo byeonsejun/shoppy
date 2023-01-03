@@ -3,8 +3,8 @@ import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import useCart from '../hooks/useCart';
 
-const ICON_CLASS =
-  "transition-all cursor-pointer hover:text-brand hover:scale-105 mx-1";
+import styles from './css/CartItem.module.css';
+
 export default function CartItem({
   product,
   product: { id, image, title, option, quantity, price },
@@ -19,19 +19,19 @@ export default function CartItem({
 
   const handleDelete = () => removeItem.mutate(id);
   return (
-    <li className="flex justify-between my-2 items-center">
-      <img src={image} alt={title} className="w-24 rounded-lg md:w-48 " />
-      <div className="flex-1 flex justify-between ml-4">
-        <div className="basis-3/5">
-          <p className="text-lg">{title}</p>
-          <p className="text-xl font-bold text-brand">{option}</p>
-          <p>￦{price}</p>
+    <li className={styles.item}>
+      <img src={image} alt={title} className={styles.img}/>
+      <div className={styles.innerBox}>
+        <div className={styles.productInfo}>
+          <p className={styles.title}>{title}</p>
+          <p className={styles.option}>[옵션: {option}]</p>
+          <p>{price}원</p>
         </div>
-        <div className="text-2xl flex items-center">
-          <AiOutlineMinusSquare className={ICON_CLASS} onClick={handleMinus} />
+        <div className={styles.iconBox}>
+          <AiOutlineMinusSquare className={styles.icon} onClick={handleMinus} />
           <span>{quantity}</span>
-          <AiOutlinePlusSquare className={ICON_CLASS} onClick={handlePlus} />
-          <RiDeleteBin5Fill className={ICON_CLASS} onClick={handleDelete} />
+          <AiOutlinePlusSquare className={styles.icon} onClick={handlePlus} />
+          <RiDeleteBin5Fill className={styles.icon} onClick={handleDelete} />
         </div>
       </div>
     </li>

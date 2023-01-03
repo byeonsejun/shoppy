@@ -1,0 +1,35 @@
+.wishSection {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.wishSectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2rem;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom-width: 1px;
+  border-color: rgb(209 213 219);
+}
+
+.wishSection p {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.wishSectionUl {
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  border-bottom-width: 1px;
+  border-color: rgb(209 213 219);
+}
+
+
+@media (max-width: 768px) {
+  .wishSectionUl {
+    padding: 1rem 0.25rem;
+  }
+
+}
