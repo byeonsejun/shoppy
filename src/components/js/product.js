@@ -23,21 +23,21 @@ export function sortSelectFn(e, nowProducts) {
   let result2 = e.target.value;
   switch (e.target.value) {
     case "낮은가격":
-      console.log("낮은가격222!!!");
+      // console.log("낮은가격222!!!");
       const row = nowProducts.sort(function (a, b) {
         return a.price - b.price;
       });
       result1 = row;
       break;
     case "높은가격":
-      console.log("높은가격222!!!");
+      // console.log("높은가격222!!!");
       const high = nowProducts.sort(function (a, b) {
         return b.price - a.price;
       });
       result1 = high;
       break;
     default:
-      console.log("Select!!!");
+      // console.log("Select!!!");
       break;
   }
   const finish = [result1, result2];

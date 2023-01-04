@@ -25,7 +25,7 @@ export default function ProductDetail() {
   const handleClick = (e) => {
     // 여기에서 장바구니에 추가하면 됨!
     if(user === null) {
-      console.log("return");
+      // console.log("return");
       setPopUp(true);
       return 
     }

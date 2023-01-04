@@ -16,8 +16,8 @@ export default function NewProduct() {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    console.log(name);
-    console.log(value);
+    // console.log(name);
+    // console.log(value);
     if (name === "file") {
       setFile(files && files[0]);
       return;

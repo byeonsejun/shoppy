@@ -79,7 +79,7 @@ export async function getProducts() {
       const allArrCategory = copyAllItems.map((category)=>{
         return Object.values(category);
       });
-      console.log(allArrCategory);
+      // console.log(allArrCategory);
       
       return allArrCategory;
       // return Object.values(snapshot.val());

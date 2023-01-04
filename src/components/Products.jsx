@@ -83,7 +83,7 @@ export default function Products() {
           className={styles.select}
           onChange={(e) => {
             const selectResult = sortSelectFn(e,nowProducts)
-            console.log(selectResult)
+            // console.log(selectResult)
             selectResult[0] && setNowProducts(selectResult[0]);
             selectResult[0] && setSelected(selectResult[1]);
           }}
