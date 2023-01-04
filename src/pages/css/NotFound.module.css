@@ -1,0 +1,74 @@
+.pageWrap {
+  text-align: center;
+  max-width: 1200px;
+  padding: 5rem;
+  margin: 0 auto;
+}
+
+.pageWrap h2 {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+.pageWrap img {
+  width: 604px;
+  margin: 0 auto;
+}
+
+.pageWrap strong {
+  font-size: 3rem;
+  line-height: 5rem;
+}
+
+.pageWrap p {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.pageWrap button {
+  display: inline-block;
+  width: 180px;
+  padding: 13px 0 19px;
+  margin-top: 36px;
+  border-radius: 30px;
+  background: #eee;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -.5px;
+  color: #000;
+}
+
+
+@media (max-width: 768px) {
+  .pageWrap {
+    padding: 2rem;
+  }
+
+  .pageWrap img {
+    width: 362px;
+    max-width: 100%;
+    margin-bottom: 25px;
+  }
+
+  .pageWrap strong {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .pageWrap p {
+    font-size: 18px;
+  }
+
+  .pageWrap button {
+    width: 150px;
+    padding: 10px 0 14px;
+    border-radius: 25px;
+    font-size: 16px;
+    line-height: 26px;
+  }
+}

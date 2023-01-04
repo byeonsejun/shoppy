@@ -7,6 +7,8 @@ import PageNav from "./ui/PageNav";
 import styles from "./css/Products.module.css";
 import { sortSelectFn } from './js/product';
 
+import FadeLoader from "react-spinners/FadeLoader";
+
 export default function Products() {
   const {
     productsQuery: { isLoading, error, data: products },
@@ -36,22 +38,22 @@ export default function Products() {
         default:
           productType = 10; // 전체 상품 보여주기 /shop
       }
-      console.log(productType);
+      // console.log(productType);
       if ((tabUrl = "shop" && 10 > productType)) {
-        console.log("상품 구체 페이지");
+        // console.log("상품 구체 페이지");
         products && setNowProducts([...products[productType]]);
       } else if ((tabUrl = "shop" && productType === 10)) {
-        console.log("상품 전체 페이지");
+        // console.log("상품 전체 페이지");
         let allArr = [];
         products &&
           products.map((product) => 
           product.map((item) => allArr.push(item) ) );
         // allArr.reverse();
         products && setNowProducts(allArr);
-        console.log(allArr)
+        // console.log(allArr)
       }
     } else { // shop/ 이 아닐경우 Ex) 메인 페이지
-      console.log("메인 홈 페이지");
+      // console.log("메인 홈 페이지");
     }
   }
 
@@ -64,6 +66,10 @@ export default function Products() {
     productTypeFn(sliceUrl);
     // eslint-disable-next-line
   }, [products, sliceUrl,]);
+
+  if(isLoading) {
+    return <FadeLoader color="gray" loading={isLoading} size={25} cssOverride={{ position: "fixed", left: "50%", top: "50%", transform:"translate(-50%, -50%)" }} />
+  }
 
   return (
     <>

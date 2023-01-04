@@ -6,6 +6,8 @@ import PriceCard from "../components/PriceCard";
 import Button from '../components/ui/Button';
 import useCart from '../hooks/useCart';
 
+import FadeLoader from "react-spinners/FadeLoader";
+
 import styles from './css/MyCart.module.css';
 
 const SHIPPING = 3000;
@@ -15,8 +17,6 @@ export default function MyCart() {
   } = useCart();
   // console.log(products);
 
-  if (isLoading) return <p>Loading...</p>;
-
   const hasProducts = products && products.length > 0;
   const totalPrice =
     products &&
@@ -24,6 +24,9 @@ export default function MyCart() {
       (prev, current) => prev + parseInt(current.price) * current.quantity,
       0
     );
+
+  if(isLoading) return <FadeLoader color="gray" loading={isLoading} size={25} cssOverride={{ position: "fixed", left: "50%", top: "50%", transform:"translate(-50%, -50%)" }} />
+    
   return (
     <section className={styles.section}>
       <h2 className={styles.h2}>My Cart</h2>

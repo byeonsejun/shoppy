@@ -6,13 +6,14 @@ import { useAuthContext } from '../context/AuthContext';
 import useCart from '../hooks/useCart';
 
 import { BsFillCartCheckFill } from "react-icons/bs";
+import FadeLoader from "react-spinners/FadeLoader";
 
 import styles from "./css/ProductDetail.module.css";
 
 
 export default function ProductDetail() {
   const { user, popUp, setPopUp } = useAuthContext();
-  const { addOrUpdateItem } = useCart();
+  const { cartQuery: { isLoading }, addOrUpdateItem } = useCart();
   const {
     state: {
       product: { id, image, title, description, category, price, options },
@@ -36,6 +37,8 @@ export default function ProductDetail() {
       }
     });
   };
+
+  if(isLoading) return <FadeLoader color="gray" loading={isLoading} size={25} cssOverride={{ position: "fixed", left: "50%", top: "50%", transform:"translate(-50%, -50%)" }} />
 
   return (
     <>
