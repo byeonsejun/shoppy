@@ -25,7 +25,7 @@ export default function WishItem({
         <div className={styles.wishInfoBoxInner}>
           <p className={styles.category}>{category}</p>
           <p className={styles.title}>{title}</p>
-          <p>{price}원</p>
+          <p>{price.toLocaleString()}원</p>
         </div>
       </div>
       <span className={styles.cancel} onClick={() => deleteWish(id)}>

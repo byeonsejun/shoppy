@@ -26,6 +26,7 @@ export default function ProductCard({ product }) {
 
   useEffect(() => {
     findWish();
+    // eslint-disable-next-line
   }, [wishFlag]);
 
   return (
@@ -44,7 +45,7 @@ export default function ProductCard({ product }) {
         />
         <div className={styles.textBox}>
           <h3 className={styles.h3}>{product.title}</h3>
-          <p>{`${product.price}원`}</p>
+          <p>{`${product.price.toLocaleString()}원`}</p>
           <span>{product.description}</span>
         </div>
       </li>

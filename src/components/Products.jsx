@@ -62,8 +62,8 @@ export default function Products() {
   useEffect(() => {
     setSelected("진열방식");
     productTypeFn(sliceUrl);
-    // console.log(nowProducts);
-  }, [products, sliceUrl]);
+    // eslint-disable-next-line
+  }, [products, sliceUrl,]);
 
   return (
     <>

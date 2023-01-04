@@ -30,7 +30,7 @@ export function sortSelectFn(e, nowProducts) {
       result1 = row;
       break;
     case "높은가격":
-      console.log("낮은가격222!!!");
+      console.log("높은가격222!!!");
       const high = nowProducts.sort(function (a, b) {
         return b.price - a.price;
       });
@@ -46,18 +46,19 @@ export function sortSelectFn(e, nowProducts) {
 
 export function productSlideResult(info, products) {
   let sortProductsArr = [];
-  console.log(info);
-  console.log(products);
+  // console.log(info);
+  // console.log(products);
   products &&
     products.map((items) =>
       items.find((item) => {
-        if (item.description === info) sortProductsArr.push(item);
+        (item.description === info) && sortProductsArr.push(item);
+        return null
       })
     );
     // sortProductsArr.sort(() => Math.random() - 0.5);
   return sortProductsArr
 }
 
-function shuffle(array) {
-  array.sort(() => Math.random() - 0.5);
-}
+// function shuffle(array) {
+//   array.sort(() => Math.random() - 0.5);
+// }

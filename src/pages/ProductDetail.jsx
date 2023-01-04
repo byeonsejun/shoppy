@@ -47,7 +47,7 @@ export default function ProductDetail() {
         <div className={styles.selectBox}>
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.price}>
-            {price}원
+            {price.toLocaleString()}원
           </p>
           <p className={styles.description}>{description}</p>
           <div className={styles.option}>

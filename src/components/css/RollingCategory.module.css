@@ -1,0 +1,16 @@
+.categorySlide {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 60vh;
+    max-width: 476px;
+    max-height: 656.5px;
+    margin: 0px auto;
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .categorySlide {
+    height: 75vh;
+  }
+}

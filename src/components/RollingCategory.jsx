@@ -4,8 +4,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
-
 import { Autoplay, Navigation } from "swiper";
+
+import styles from "./css/RollingCategory.module.css";
 
 export default function RollingCategory() {
   const navigate = useNavigate();
@@ -51,17 +52,10 @@ export default function RollingCategory() {
             return (
               <SwiperSlide key={slide.link}>
                 <div
+                  className={styles.categorySlide}
                   onClick={() => navigate(`/shop/${slide.link}`)}
                   style={{
                     backgroundImage: `url(${slide.url})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "50% 50%",
-                    backgroundSize: "cover",
-                    height: "60vh",
-                    maxWidth: "476px",
-                    maxHeight: "656.5px",
-                    margin: "0 auto",
-                    cursor: "pointer",
                   }}
                 ></div>
               </SwiperSlide>
