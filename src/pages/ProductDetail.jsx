@@ -4,6 +4,7 @@ import PopUp from '../components/PopUp';
 import Button from '../components/ui/Button';
 import { useAuthContext } from '../context/AuthContext';
 import useCart from '../hooks/useCart';
+import useProducts from "../hooks/useProducts";
 
 import { BsFillCartCheckFill } from "react-icons/bs";
 import FadeLoader from "react-spinners/FadeLoader";
@@ -13,7 +14,8 @@ import styles from "./css/ProductDetail.module.css";
 
 export default function ProductDetail() {
   const { user, popUp, setPopUp } = useAuthContext();
-  const { cartQuery: { isLoading }, addOrUpdateItem } = useCart();
+  const { addOrUpdateItem } = useCart();
+  const { productsQuery: { isLoading } } = useProducts();
   const {
     state: {
       product: { id, image, title, description, category, price, options },
