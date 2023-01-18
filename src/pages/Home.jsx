@@ -9,7 +9,8 @@ import useProducts from '../hooks/useProducts';
 import FadeLoader from "react-spinners/FadeLoader";
 
 export default function Home() {
-  const { productsQuery: { isLoading } } = useProducts();
+  const { productsQuery: { isLoading, } } = useProducts();
+  // console.log(product)
 
   if(isLoading) return <FadeLoader color="gray" loading={isLoading} size={25} cssOverride={{ position: "fixed", left: "50%", top: "50%", }} />
   

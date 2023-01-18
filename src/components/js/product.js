@@ -45,17 +45,11 @@ export function sortSelectFn(e, nowProducts) {
 }
 
 export function productSlideResult(info, products) {
-  let sortProductsArr = [];
-  // console.log(info);
-  // console.log(products);
-  products &&
-    products.map((items) =>
-      items.find((item) => {
-        (item.description === info) && sortProductsArr.push(item);
-        return null
-      })
-    );
-    // sortProductsArr.sort(() => Math.random() - 0.5);
+  const sortProductsArr = products &&
+    products.filter((item) => {
+      return item.description === info;
+    })
+    sortProductsArr.sort(() => Math.random() - 0.5);
   return sortProductsArr
 }
 

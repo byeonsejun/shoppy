@@ -13,6 +13,7 @@ import ProtectedRoute from './pages/ProtectedRoute';
 import Products from './components/Products';
 import LocalWish from './pages/LocalWish';
 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: '/shop/OUTER', element: <Products /> },
       { path: '/shop/DENIM', element: <Products /> },
       { path: '/shop/SHOES', element: <Products /> },
+      { path: '/shop/?s=:search', element: <Products /> },
       
       {
         path: '/shop/new',

@@ -10,15 +10,17 @@ import ProductCard from "./ProductCard";
 
 export default function SlideProduct({ info }) {
   const {
-    productsQuery: { isLoading, error, data: products },
+    productsQuery: { data: products },
   } = useProducts();
+
+  // console.log(products);
 
   const [items, setItems] = useState(null);
   // console.log(products);
 
   useEffect(() => {
     setItems(productSlideResult(info, products));
-  }, [products]);
+  }, [info, products]);
 
   return (
     <section className={`product_slide_wrap ${info}`}>

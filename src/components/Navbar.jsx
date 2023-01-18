@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { BsFillPencilFill } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
+import { BsFillPencilFill, BsSearch } from "react-icons/bs";
 
 import User from "./User";
 import PopUp from "./PopUp";
@@ -13,12 +13,29 @@ export default function Navbar() {
   const { user, logout, popUp, setPopUp } = useAuthContext();
   const [categorys] = useState(["OUTER", "DENIM", "SHOES"]);
 
+  const navigate = useNavigate();
+
   const [mbMenuTF, setMbMenuTF] = useState(styles.mbMenuF);
+  const [searchShow, setSearchShow] = useState(styles.searchN);
+  const [searchValue, setSearchValue] = useState("");
 
   const menuBttFn = () => {
     mbMenuTF === styles.mbMenuF
       ? setMbMenuTF(styles.mbMenuT)
       : setMbMenuTF(styles.mbMenuF);
+  };
+
+  const searchOnOff = () => {
+    searchShow === styles.searchN
+      ? setSearchShow(styles.searchS)
+      : setSearchShow(styles.searchN);
+  };
+
+  const goToSearch = (e) => {
+    e.preventDefault();
+    setSearchValue("");
+    setSearchShow(styles.searchN);
+    navigate(`/shop/?s=${searchValue}`);
   };
 
   return (
@@ -41,6 +58,28 @@ export default function Navbar() {
                 );
               })}
             </ul>
+          </div>
+          <div className={styles.searchBox} onClick={searchOnOff}>
+            SEARCH
+          </div>
+          <div className={searchShow}>
+            {/* <div className={styles.searchBoxInner}> */}
+              <form onSubmit={goToSearch} className={styles.searchBoxInner}>
+                <input
+                  type="text"
+                  name="search"
+                  placeholder="상품명을 입력해주세요."
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                />
+                <button
+                  className={styles.searchIconBox}
+                  // onClick={goToSearch}
+                >
+                  <BsSearch className={styles.searchIcon} />
+                </button>
+              </form>
+            {/* </div> */}
           </div>
         </nav>
         <h1 className={styles.logo}>

@@ -79,8 +79,10 @@ nav,
 }
 
 .shopList {
-  flex-direction: column;
-  justify-content: space-around;
+  /* flex-direction: column; */
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
   /* align-items: center; */
 }
 
@@ -91,6 +93,50 @@ nav,
   cursor: default;
   font-size: 14px;
 }
+
+.searchBox {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.searchN {
+  display: none;
+}
+
+.searchS {
+  position: fixed;
+  left: 25px;
+  top: 50px;
+  width: 250px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.searchBoxInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.searchS input {
+  padding: 0.5rem;
+  width: 90%;
+  height: 100%;
+  font-size: 12px;
+}
+.searchS .searchIconBox {
+  width: 10%;
+  height: 100%;
+  color: white;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
 
 .productList {
   display: none;
@@ -160,6 +206,7 @@ nav,
     top: 50px;
     left: 0;
     width: 80vw;
+    min-width: 200px;
     height: 100vh;
     padding: 1.5rem;
     transition: all 0.5s;
@@ -180,6 +227,18 @@ nav,
 
   nav.shopList {
     top: 7rem;
+    width: calc(100% - 1.5rem);
+    justify-content: space-between;
+    padding-right: 1.5rem;
+  }
+
+  .searchS {
+    position: absolute;
+    top: -12px;
+    left: auto;
+    right: 25px;
+    width: 50vw;
+    min-width: 155px;
   }
 
   .productList {

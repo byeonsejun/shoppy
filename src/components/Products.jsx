@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import useProducts from "../hooks/useProducts";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import PageNav from "./ui/PageNav";
 
 import styles from "./css/Products.module.css";
-import { sortSelectFn } from './js/product';
+import { sortSelectFn } from "./js/product";
 
 import FadeLoader from "react-spinners/FadeLoader";
 
@@ -19,56 +19,56 @@ export default function Products() {
   const [selected, setSelected] = useState("");
 
   const location = useLocation();
-  let tabUrl = location.pathname.split("/")[1];
+  let [query] = useSearchParams();
+  let searchQuery = query.get("s");
+
+  // let tabUrl = location.pathname.split("/")[1];
   let sliceUrl = location.pathname.split("/")[2];
-  let productType;
-  
-  function productTypeFn(sliceUrl) {
-    if(tabUrl === "shop"){
-      switch (sliceUrl) {
-        case "OUTER":
-          productType = 1;
-          break;
-        case "DENIM":
-          productType = 0;
-          break;
-        case "SHOES":
-          productType = 2;
-          break;
-        default:
-          productType = 10; // 전체 상품 보여주기 /shop
+
+  function productTypeFn() {
+    // console.log(tabUrl);
+    // console.log(sliceUrl);
+    if (sliceUrl === undefined) {
+      // 상품 전체 페이지
+      products && setNowProducts(products);
+    } else {
+      // 상품 검색일시
+      if (searchQuery) {
+        const searchItem =
+          products &&
+          products.filter((item) => item.title.includes(searchQuery));
+        setNowProducts(searchItem);
+        return;
       }
-      // console.log(productType);
-      if ((tabUrl = "shop" && 10 > productType)) {
-        // console.log("상품 구체 페이지");
-        products && setNowProducts([...products[productType]]);
-      } else if ((tabUrl = "shop" && productType === 10)) {
-        // console.log("상품 전체 페이지");
-        let allArr = [];
+      // 상품 카테고리 페이지
+      const sortProductsArr =
         products &&
-          products.map((product) => 
-          product.map((item) => allArr.push(item) ) );
-        // allArr.reverse();
-        products && setNowProducts(allArr);
-        // console.log(allArr)
-      }
-    } else { // shop/ 이 아닐경우 Ex) 메인 페이지
-      // console.log("메인 홈 페이지");
+        products.filter((item) => {
+          return item.category === sliceUrl;
+        });
+      setNowProducts(sortProductsArr);
     }
   }
 
   // localStorage 셋팅
   let myWish = JSON.parse(localStorage.getItem("wishItem"));
   myWish === null && localStorage.setItem("wishItem", JSON.stringify([]));
-
+  
   useEffect(() => {
     setSelected("진열방식");
     productTypeFn(sliceUrl);
     // eslint-disable-next-line
-  }, [products, sliceUrl,]);
+  }, [products, sliceUrl, searchQuery]);
 
-  if(isLoading) {
-    return <FadeLoader color="gray" loading={isLoading} size={25} cssOverride={{ position: "fixed", left: "50%", top: "50%", }} />
+  if (isLoading) {
+    return (
+      <FadeLoader
+        color="gray"
+        loading={isLoading}
+        size={25}
+        cssOverride={{ position: "fixed", left: "50%", top: "50%" }}
+      />
+    );
   }
 
   return (
@@ -82,7 +82,7 @@ export default function Products() {
           id="select"
           className={styles.select}
           onChange={(e) => {
-            const selectResult = sortSelectFn(e,nowProducts)
+            const selectResult = sortSelectFn(e, nowProducts);
             // console.log(selectResult)
             selectResult[0] && setNowProducts(selectResult[0]);
             selectResult[0] && setSelected(selectResult[1]);
@@ -98,13 +98,9 @@ export default function Products() {
       <ul className={styles.ul}>
         {nowProducts &&
           nowProducts.map((product) => {
-            return (
-              <ProductCard
-                key={product.id}
-                product={product}
-              />
-            );
+            return <ProductCard key={product.id} product={product} />;
           })}
+          {nowProducts && nowProducts.length === 0 && <span>찾으시는 상품이 없습니다</span>}
       </ul>
     </>
   );
