@@ -51,8 +51,8 @@ export default function ProductCard({ product }) {
       </li>
       <span className={styles.cardWishBtt} onClick={() => setWishFlag(getWishItem(product))}>
         { nowResult ? 
-        <img src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1672206344/before_wish_icon_ex3avf.png" alt="wish_after" /> : 
-        <img src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1672206341/after_wish_icon_exq07b.png" alt="wish_before" /> }
+        <img src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1674042389/after_wish_icon_rxs6nh.png" alt="wish_after" /> : 
+        <img src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1674042393/before_wish_icon_cvubwo.png" alt="wish_before" /> }
       </span>
     </div>
   );

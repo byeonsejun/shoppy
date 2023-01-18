@@ -12,7 +12,7 @@ export default function NotFound() {
         <h2>Error</h2>
         <article>
           <img
-            src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1672811868/img_error_jbsb9x.png"
+            src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1674042314/img_error_jpy9pg.png"
             alt="errorPage"
           />
           <strong>찾으시는 페이지가 없습니다.</strong>
