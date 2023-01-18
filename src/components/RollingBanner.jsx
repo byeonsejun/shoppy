@@ -8,7 +8,7 @@ import { Navigation } from "swiper";
 
 export default function RollingBanner() {
   const [bgUrl] = useState([
-    "https://res.cloudinary.com/daqjqq0hy/image/upload/v1672197554/mdsection1_l1gn4i.jpg",
+    "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041887/mdsection1_i6qvqt.jpg",
   ]);
 
   return (

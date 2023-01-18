@@ -12,15 +12,15 @@ export default function RollingCategory() {
   const navigate = useNavigate();
   const [bgUrl] = useState([
     {
-      url: "https://res.cloudinary.com/daqjqq0hy/image/upload/v1672364851/main_outer_vbhrjf.jpg",
+      url: "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041929/main_outer_gwbtw9.jpg",
       link: "OUTER",
     },
     {
-      url: "https://res.cloudinary.com/daqjqq0hy/image/upload/v1672364859/main_denim_tff6vz.jpg",
+      url: "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041919/main_denim_lkahdx.jpg",
       link: "DENIM",
     },
     {
-      url: "https://res.cloudinary.com/daqjqq0hy/image/upload/v1672364868/main_shoes_wpd2gj.jpg",
+      url: "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041934/main_shoes_pvlevv.jpg",
       link: "SHOES",
     },
   ]);

@@ -16,16 +16,16 @@ export default function MainBanner() {
     if (window.innerWidth > 1200) {
       // console.log("1200 이상");
       setBgUrl([
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1672732119/mainbg1_zjgfqv.jpg",
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1672732139/mainbg2_a7yfpf.jpg",
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1672732149/mainbg3_g2kxaj.jpg",
+        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041510/mainbg1_q9gki5.jpg",
+        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041519/mainbg2_iespuf.jpg",
+        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041525/mainbg3_a67rfe.jpg",
       ]);
     } else {
       // console.log("1200 이하");
       setBgUrl([
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1672732235/mbmainbg1_necwoz.jpg",
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1672732239/mbmainbg2_zitspg.jpg",
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1672732244/mbmainbg3_zhno5p.jpg",
+        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041693/mbmainbg1_vojf5v.jpg",
+        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041700/mbmainbg2_h1j4qh.jpg",
+        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041705/mbmainbg3_cv4bcl.jpg",
       ]);
     }
   };
