@@ -9,7 +9,7 @@ export default function User({ user: { photoURL, displayName } }) {
   const [switchMenu, setSwitchMenu] = useState(false);
 
   const sNhMyMenu = () => {
-    // console.log("hihi");
+    console.log("hihi");
     setSwitchMenu(!switchMenu);
   }
 
