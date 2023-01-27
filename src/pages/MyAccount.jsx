@@ -10,7 +10,7 @@ export default function MyAccount() {
   const { addOrUpdateMyAccount } = useAccount();
 
   const [myAccount, setMyAccount] = useState({});
-  console.log(user);
+  // console.log(user);
   
   // 폼안에 넣을거 이름(고정), 주소 , 전화번호, 이메일, 수정확인버튼, 취소버튼(홈으로)
   
@@ -31,7 +31,7 @@ export default function MyAccount() {
     }
     addOrUpdateMyAccount.mutate(account, {
       onSuccess: () => {
-        console.log("성공");
+        // console.log("성공");
         // setSuccess('장바구니에 추가 되었습니다.');
         // setTimeout(()=> setSuccess(null), 3000);
       }
