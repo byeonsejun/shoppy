@@ -18,6 +18,7 @@ export default function NewProduct() {
     const { name, value, files } = e.target;
     // console.log(name);
     // console.log(value);
+    // console.log(files);
     if (name === "file") {
       setFile(files && files[0]);
       return;
@@ -35,6 +36,7 @@ export default function NewProduct() {
           {
             onSuccess: () => {
               setSuccess("성공적으로 제품이 추가되었습니다.");
+              setProduct({})
               e.target.reset();
               setTimeout(() => {
                 setSuccess(null);

@@ -17,7 +17,9 @@ export default function PageNav({ sliceUrl }) {
       ) : (
         <>
           <Link to="/">Home</Link> / <Link to="/shop">Shop</Link> /{" "}
-          <span style={{ fontWeight: "bold" , textTransform: "capitalize"}}>{sliceUrl.toLowerCase()}</span>
+          <span style={{ fontWeight: "bold", textTransform: "capitalize" }}>
+            {sliceUrl.toLowerCase()}
+          </span>
         </>
       )}
     </div>

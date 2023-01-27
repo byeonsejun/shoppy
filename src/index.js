@@ -12,6 +12,7 @@ import NotFound from './pages/NotFound';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Products from './components/Products';
 import LocalWish from './pages/LocalWish';
+import MyAccount from './pages/MyAccount';
 
 
 const router = createBrowserRouter([
@@ -61,6 +62,15 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: '/account',
+        element: (
+          <ProtectedRoute>
+            <MyAccount />
+          </ProtectedRoute>
+        ),
+      },
+      
     ],
   },
 ]);

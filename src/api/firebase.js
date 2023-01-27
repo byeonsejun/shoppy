@@ -66,23 +66,17 @@ export async function addNewProduct(product, image) {
     options: product.options.split(","),
   });
 }
-
 export async function getProducts() {
   return get(ref(database, "shop")).then((snapshot) => {
     if (snapshot.exists()) {
-      // console.log(snapshot.val())
       // console.log(Object.keys(snapshot.val()))
       // console.log(Object.values(snapshot.val()))
       // console.log(Object.entries(snapshot.val()))
       const copyAllItems = [...Object.values(snapshot.val())];
-      // console.log(copyAllItems);
-
       // const allArrCategory = copyAllItems.map((category) => {
       //   return Object.values(category);
       // });
-    
       return copyAllItems;
-
       // return Object.values(snapshot.val());
     }
     return [];
@@ -95,11 +89,19 @@ export async function getCart(userId) {
     return Object.values(items);
   });
 }
-
 export async function addOrUpdateToCart(userId, product) {
   return set(ref(database, `carts/${userId}/${product.id}`), product);
 }
-
 export async function removeFromCart(userId, productId) {
   return remove(ref(database, `carts/${userId}/${productId}`));
+}
+
+export async function getAccount(userId) {
+  return get(ref(database, `account/${userId}`)).then((snapshot) => {
+    const items = snapshot.val() || {};
+    return Object.values(items);
+  });
+}
+export async function addOrUpdateToAccount(userId, account) {
+  return set(ref(database, `account/${userId}`), account);
 }

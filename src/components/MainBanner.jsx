@@ -10,7 +10,11 @@ import styels from "./css/MainBanner.module.css";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
 export default function MainBanner() {
-  const [bgUrl, setBgUrl] = useState();
+  const [bgUrl, setBgUrl] = useState([
+    "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041510/mainbg1_q9gki5.jpg",
+    "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041519/mainbg2_iespuf.jpg",
+    "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041525/mainbg3_a67rfe.jpg",
+  ]);
 
   const handleResize = () => {
     if (window.innerWidth > 1200) {

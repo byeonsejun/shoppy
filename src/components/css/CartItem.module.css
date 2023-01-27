@@ -57,12 +57,17 @@ img {
   .img {
     width: 6rem;
   }
-  .iconBox {
+
+  .innerBox {
     flex-direction: column;
-    justify-content: center;
   }
+
+  .productInfo {
+    padding-left: 0.5rem;
+  }
+
   .icon:last-child {
-    margin-top: 0.5rem;
+    margin-left: 1rem;
   }
 
   .title {
