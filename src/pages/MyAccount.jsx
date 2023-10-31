@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
-import Button from '../components/ui/Button';
-import { useAuthContext } from '../context/AuthContext';
-import useAccount from '../hooks/useAccount';
+import React, { useState } from "react";
+import Button from "../components/ui/Button";
+import { useAuthContext } from "../context/AuthContext";
+import useAccount from "../hooks/useAccount";
+import useCart from "../hooks/useCart";
 
-import styles from './css/MyAccount.module.css';
+import styles from "./css/MyAccount.module.css";
+
+import FadeLoader from "react-spinners/FadeLoader";
 
 export default function MyAccount() {
   const { user } = useAuthContext();
+  const {
+    cartQuery: { isLoading },
+  } = useCart();
   const { addOrUpdateMyAccount } = useAccount();
 
   const [myAccount, setMyAccount] = useState({});
   // console.log(user);
-  
+
   // 폼안에 넣을거 이름(고정), 주소 , 전화번호, 이메일, 수정확인버튼, 취소버튼(홈으로)
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,39 +26,51 @@ export default function MyAccount() {
     // console.log(value);
     setMyAccount((myAccount) => ({ ...myAccount, [name]: value }));
   };
-  
+
   const handleSubmit = (e) => {
-    const account = { 
+    const account = {
       id: user.uid,
       address: "address",
       phonNumber: "01088957698",
       email: "byeonsejun@naver.com",
-    }
+    };
     addOrUpdateMyAccount.mutate(account, {
       onSuccess: () => {
         // console.log("성공");
         // setSuccess('장바구니에 추가 되었습니다.');
         // setTimeout(()=> setSuccess(null), 3000);
-      }
+      },
     });
   };
 
+  // if (isLoading) {
+  //   return (
+  //     <FadeLoader
+  //       color="gray"
+  //       loading={isLoading}
+  //       size={25}
+  //       cssOverride={{ position: "fixed", left: "50%", top: "50%" }}
+  //     />
+  //   );
+  // }
 
   return (
     <section>
       <h2>My Account</h2>
       <br></br>
       <form className={styles.form} onSubmit={handleSubmit}>
-        {
-          user && 
-          <input
-            type="text"
-            name="name"
-            readOnly
-            placeholder={ user.displayName}
-            onChange={handleChange}
-          />
-        }
+          {
+            user &&
+              <input
+              type="text"
+              name="name"
+              readOnly
+              placeholder={user.displayName}
+              onChange={handleChange}
+            />
+          }
+          
+    
         {/* <input
           type="number"
           name="price"
@@ -103,4 +120,3 @@ export default function MyAccount() {
     </section>
   );
 }
-

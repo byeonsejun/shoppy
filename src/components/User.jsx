@@ -30,7 +30,7 @@ export default function User({ user: { photoURL, displayName } }) {
       /> */}
       <span 
         className={styles.userName}
-        // onClick={sNhMyMenu}
+        onClick={sNhMyMenu}
       >
         {displayName}
       </span>
@@ -40,8 +40,8 @@ export default function User({ user: { photoURL, displayName } }) {
         <div className={styles.listWrap}>
           <ul className={styles.ul}>
             <li>주문내역</li>
-            {/* <li onClick={()=>goToMember("account")}> */}
-            <li>
+            <li onClick={()=>goToMember("account")}>
+            {/* <li> */}
               <span>회원정보</span>
             </li>
           </ul>
