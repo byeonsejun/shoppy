@@ -1,40 +1,36 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { BsFillPencilFill, BsSearch } from "react-icons/bs";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { BsFillPencilFill, BsSearch } from 'react-icons/bs';
 
-import User from "./User";
-import PopUp from "./PopUp";
-import { useAuthContext } from "../context/AuthContext";
-import CartStatus from "./CartStatus";
+import User from './User';
+import PopUp from './PopUp';
+import { useAuthContext } from '../context/AuthContext';
+import CartStatus from './CartStatus';
 
-import styles from "./css/Navbar.module.css";
+import styles from './css/Navbar.module.css';
 
 export default function Navbar() {
   const { user, logout, popUp, setPopUp } = useAuthContext();
-  const [categorys] = useState(["OUTER", "DENIM", "SHOES"]);
+  const [categorys] = useState(['OUTER', 'DENIM', 'SHOES']);
 
   const navigate = useNavigate();
 
   const [mbMenuTF, setMbMenuTF] = useState(styles.mbMenuF);
-  const [searchShow, setSearchShow] = useState(styles.searchN);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   const menuBttFn = () => {
-    mbMenuTF === styles.mbMenuF
-      ? setMbMenuTF(styles.mbMenuT)
-      : setMbMenuTF(styles.mbMenuF);
+    mbMenuTF === styles.mbMenuF ? setMbMenuTF(styles.mbMenuT) : setMbMenuTF(styles.mbMenuF);
   };
 
-  const searchOnOff = () => {
-    searchShow === styles.searchN
-      ? setSearchShow(styles.searchS)
-      : setSearchShow(styles.searchN);
+  const searchDiv = document.getElementById('search_div');
+  const searchOnOff = (e) => {
+    e.preventDefault();
   };
 
   const goToSearch = (e) => {
     e.preventDefault();
-    setSearchValue("");
-    setSearchShow(styles.searchN);
+    setSearchValue('');
+    searchDiv.style.display = 'none';
     navigate(`/shop/?s=${searchValue}`);
   };
 
@@ -59,27 +55,23 @@ export default function Navbar() {
               })}
             </ul>
           </div>
-          <div className={styles.searchBox} onClick={searchOnOff}>
+          <div id="search_button" className={styles.searchBox} onClick={searchOnOff}>
             SEARCH
           </div>
-          <div className={searchShow}>
-            {/* <div className={styles.searchBoxInner}> */}
-              <form onSubmit={goToSearch} className={styles.searchBoxInner}>
-                <input
-                  type="text"
-                  name="search"
-                  placeholder="상품명을 입력해주세요."
-                  value={searchValue}
-                  onChange={(e) => setSearchValue(e.target.value)}
-                />
-                <button
-                  className={styles.searchIconBox}
-                  // onClick={goToSearch}
-                >
-                  <BsSearch className={styles.searchIcon} />
-                </button>
-              </form>
-            {/* </div> */}
+          <div className={styles.searchS} id="search_div">
+            <form onSubmit={goToSearch} className={styles.searchBoxInner}>
+              <input
+                id="search_input"
+                type="text"
+                name="search"
+                placeholder="상품명을 입력해주세요."
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+              <button className={styles.searchIconBox}>
+                <BsSearch className={styles.searchIcon} />
+              </button>
+            </form>
           </div>
         </nav>
         <h1 className={styles.logo}>
@@ -98,8 +90,8 @@ export default function Navbar() {
             <Link
               to="/shop/new"
               style={{
-                fontSize: "1.5rem",
-                lineHeight: "2rem",
+                fontSize: '1.5rem',
+                lineHeight: '2rem',
               }}
               title="관리자 상품등록 페이지"
             >
@@ -108,10 +100,7 @@ export default function Navbar() {
           )}
           {user && <User user={user} />}
           {!user ? (
-            <button
-              className={styles.loginButton}
-              onClick={() => setPopUp(true)}
-            >
+            <button className={styles.loginButton} onClick={() => setPopUp(true)}>
               Login
             </button>
           ) : (

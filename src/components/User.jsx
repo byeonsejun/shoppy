@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styles from "./css/User.module.css";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './css/User.module.css';
 
 export default function User({ user: { photoURL, displayName } }) {
-
   let navigate = useNavigate();
 
   const [switchMenu, setSwitchMenu] = useState(false);
 
   const sNhMyMenu = () => {
-    console.log("hihi");
+    console.log('hihi');
     setSwitchMenu(!switchMenu);
-  }
+  };
 
   const goToMember = (link) => {
     navigate(`/${link}`);
@@ -19,36 +18,31 @@ export default function User({ user: { photoURL, displayName } }) {
   };
 
   return (
-    <div
-      className={styles.userWrap}
-    >
+    <div className={styles.userWrap}>
       {/* <img
         className="w-10 h-10 rounded-full mr-2"
         src={photoURL}
         alt={displayName}
         referrerPolicy="no-referrer"
       /> */}
-      <span 
+      <span
         className={styles.userName}
-        onClick={sNhMyMenu}
+        // onClick={sNhMyMenu}
       >
         {displayName}
       </span>
 
-      {
-        switchMenu ?
+      {switchMenu ? (
         <div className={styles.listWrap}>
           <ul className={styles.ul}>
             <li>주문내역</li>
-            <li onClick={()=>goToMember("account")}>
-            {/* <li> */}
+            <li onClick={() => goToMember('account')}>
+              {/* <li> */}
               <span>회원정보</span>
             </li>
           </ul>
-        </div> 
-        : null
-      }
-
+        </div>
+      ) : null}
     </div>
   );
 }

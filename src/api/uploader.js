@@ -4,8 +4,8 @@ export async function uploadImage(file) {
   data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_PRESET);
   return fetch(process.env.REACT_APP_CLOUDINARY_URL, {
     method: 'POST',
-    body: data
+    body: data,
   })
-  .then((res) => res.json())
-  .then((data) => data.url);
+    .then((res) => res.json())
+    .then((data) => data.url);
 }

@@ -23,7 +23,7 @@
   display: none;
 }
 
-.header > button > span{
+.header > button > span {
   display: block;
   height: 2px;
   background: #1a1a1a;
@@ -45,7 +45,6 @@ button.mbMenuT span:nth-child(3) {
   transform: rotateZ(-45deg) translateY(5px);
   background: #333;
 }
-
 
 .header > div {
   display: flex;
@@ -70,7 +69,7 @@ nav,
 }
 
 .logo a::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 100px;
   height: 19.3px;
@@ -97,6 +96,7 @@ nav,
 .searchBox {
   cursor: pointer;
   font-size: 14px;
+  line-height: 50px;
 }
 
 .searchN {
@@ -104,12 +104,13 @@ nav,
 }
 
 .searchS {
+  display: none;
+  /* display: flex; */
   position: fixed;
   left: 25px;
   top: 50px;
   width: 250px;
   height: 25px;
-  display: flex;
   align-items: center;
 }
 
@@ -135,8 +136,6 @@ nav,
   justify-content: center;
   cursor: pointer;
 }
-
-
 
 .productList {
   display: none;
@@ -260,17 +259,16 @@ nav,
     right: 1rem;
   }
 
-  
   nav.navMenu > div {
     width: 40px;
   }
 }
 
-@media (max-width: 430px) { 
+@media (max-width: 430px) {
   nav.shopList {
     top: 8rem;
   }
-  
+
   nav.navMenu {
     top: 4.5rem;
   }
@@ -286,5 +284,4 @@ nav,
     right: 6rem;
     width: 40px;
   }
-  
-} 
+}

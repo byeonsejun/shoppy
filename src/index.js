@@ -14,7 +14,6 @@ import Products from './components/Products';
 import LocalWish from './pages/LocalWish';
 import MyAccount from './pages/MyAccount';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -27,11 +26,11 @@ const router = createBrowserRouter([
       { path: '/shop/DENIM', element: <Products /> },
       { path: '/shop/SHOES', element: <Products /> },
       { path: '/shop/?s=:search', element: <Products /> },
-      
+
       {
         path: '/shop/new',
         element: (
-          <ProtectedRoute requireAdmin={true} >
+          <ProtectedRoute requireAdmin={true}>
             <NewProduct />
           </ProtectedRoute>
         ),
@@ -70,14 +69,9 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      
     ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  // <React.StrictMode>
-    <RouterProvider router={router} />
-  // </React.StrictMode>
-);
+root.render(<RouterProvider router={router} />);

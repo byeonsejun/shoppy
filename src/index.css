@@ -2,16 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* html,
-body {
+html {
   width: 100%;
-} */
+  height: auto;
+}
 
 body {
+  min-height: 100vh;
+  height: auto;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,8 +23,7 @@ img {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 input {
@@ -169,15 +169,15 @@ section .categorySwiper .swiper-button-next {
   right: 0px;
 }
 
-
 @media (max-width: 1200px) {
   section {
     margin-bottom: 110px;
   }
 }
 
-@media (max-width: 768px) { 
-  .product_slide_wrap, section.category_slide {
+@media (max-width: 768px) {
+  .product_slide_wrap,
+  section.category_slide {
     padding: 0 8px;
   }
 }
