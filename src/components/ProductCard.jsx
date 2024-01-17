@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styles from "./css/ProductCard.module.css";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './css/ProductCard.module.css';
 import { getWishItem } from './js/product';
 
 export default function ProductCard({ product }) {
@@ -9,8 +9,8 @@ export default function ProductCard({ product }) {
   const [nowResult, setNowResult] = useState(null);
 
   const findWish = () => {
-    let myWishs = JSON.parse(localStorage.getItem("wishItem"));
-    myWishs === null && localStorage.setItem("wishItem", JSON.stringify([]));
+    let myWishs = JSON.parse(localStorage.getItem('wishItem'));
+    myWishs === null && localStorage.setItem('wishItem', JSON.stringify([]));
     const itemResult = myWishs && myWishs.some((myWish) => myWish.id === product.id);
     // console.log(product.id); //현재의 id
     // console.log(itemResult); // 현재의 리설트값
@@ -19,10 +19,7 @@ export default function ProductCard({ product }) {
     setNowResult(itemResult);
   };
 
-  let [wishFlag, setWishFlag] = useState(
-    JSON.parse(localStorage.getItem("wishItem"))
-  );
-
+  let [wishFlag, setWishFlag] = useState(JSON.parse(localStorage.getItem('wishItem')));
 
   useEffect(() => {
     findWish();
@@ -31,12 +28,11 @@ export default function ProductCard({ product }) {
 
   return (
     <div className={styles.cardBox}>
-      <li
-        className={styles.li}
-      >
-        <img 
-          className={styles.productImg} 
-          src={product.image} alt={product.title} 
+      <li className={styles.li}>
+        <img
+          className={styles.productImg}
+          src={product.image}
+          alt={product.title}
           onClick={() => {
             navigate(`/shop/${product.category}/${product.id}`, {
               state: { product },
@@ -50,9 +46,17 @@ export default function ProductCard({ product }) {
         </div>
       </li>
       <span className={styles.cardWishBtt} onClick={() => setWishFlag(getWishItem(product))}>
-        { nowResult ? 
-        <img src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1674042393/before_wish_icon_cvubwo.png" alt="wish_after" /> : 
-        <img src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1674042389/after_wish_icon_rxs6nh.png" alt="wish_before" /> }
+        {nowResult ? (
+          <img
+            src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1674042393/before_wish_icon_cvubwo.png"
+            alt="wish_after"
+          />
+        ) : (
+          <img
+            src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1674042389/after_wish_icon_rxs6nh.png"
+            alt="wish_before"
+          />
+        )}
       </span>
     </div>
   );
