@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from "react";
-import useProducts from "../hooks/useProducts";
-import { productSlideResult } from "./js/product";
+import React, { useEffect, useState } from 'react';
+import useProducts from '../hooks/useProducts';
+import { productSlideResult } from './js/product';
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper";
-import ProductCard from "./ProductCard";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper';
+import ProductCard from './ProductCard';
 
 export default function SlideProduct({ info }) {
   const {
     productsQuery: { data: products },
   } = useProducts();
 
-  // console.log(products);
-
   const [items, setItems] = useState(null);
-  // console.log(products);
 
   useEffect(() => {
     setItems(productSlideResult(info, products));

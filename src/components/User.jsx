@@ -7,10 +7,10 @@ export default function User({ user: { photoURL, displayName } }) {
 
   const [switchMenu, setSwitchMenu] = useState(false);
 
-  const sNhMyMenu = () => {
-    console.log('hihi');
-    setSwitchMenu(!switchMenu);
-  };
+  // const sNhMyMenu = () => {
+  //   // console.log('hihi');
+  //   setSwitchMenu(!switchMenu);
+  // };
 
   const goToMember = (link) => {
     navigate(`/${link}`);

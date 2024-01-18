@@ -3,45 +3,52 @@ import { login, logout, onUserStateChange } from '../api/firebase';
 
 import { BsGoogle } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
+import { returnLocalStorageValue } from '../components/js/util';
 
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
   const [platforms] = useState([
     {
-      name: "google",
+      name: 'google',
       icon: <BsGoogle />,
-      text: "구글 계정으로 로그인"
+      text: '구글 계정으로 로그인',
     },
     {
-      name: "facebook",
+      name: 'facebook',
       icon: <FaFacebookF />,
-      text: "페이스북 계정으로 로그인"
-    } 
+      text: '페이스북 계정으로 로그인',
+    },
   ]);
   const [user, setUser] = useState();
   const [popUp, setPopUp] = useState(false);
-  
+
   const goToLogin = (user) => {
     setPopUp(false);
     login(user);
-  }
+  };
 
   useEffect(() => {
-    onUserStateChange(user => {
-      // console.log(user);
+    onUserStateChange((user) => {
       setUser(user);
     });
+    returnLocalStorageValue('wishItem');
   }, []);
 
   return (
-    <AuthContext.Provider 
+    <AuthContext.Provider
       value={{
-        user, popUp, platforms, uid: user && user.uid,
-        setPopUp, login, logout, goToLogin
+        user,
+        popUp,
+        platforms,
+        uid: user && user.uid,
+        setPopUp,
+        login,
+        logout,
+        goToLogin,
       }}
     >
-      { children }
+      {children}
     </AuthContext.Provider>
   );
 }

@@ -36,23 +36,11 @@ const router = createBrowserRouter([
         ),
       },
 
-      {
-        path: '/shop/OUTER/:id',
-        element: <ProductDetail />,
-      },
-      {
-        path: '/shop/DENIM/:id',
-        element: <ProductDetail />,
-      },
-      {
-        path: '/shop/SHOES/:id',
-        element: <ProductDetail />,
-      },
+      { path: '/shop/OUTER/:id', element: <ProductDetail /> },
+      { path: '/shop/DENIM/:id', element: <ProductDetail /> },
+      { path: '/shop/SHOES/:id', element: <ProductDetail /> },
 
-      {
-        path: '/wish',
-        element: <LocalWish />,
-      },
+      { path: '/wish', element: <LocalWish /> },
       {
         path: '/carts',
         element: (

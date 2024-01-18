@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./css/PopUp.module.css";
-import { useAuthContext } from "../context/AuthContext";
+import React from 'react';
+import styles from './css/PopUp.module.css';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function PopUp() {
   const { platforms, setPopUp, goToLogin } = useAuthContext();
@@ -12,7 +12,7 @@ export default function PopUp() {
         <span className={styles.modal_close} onClick={() => setPopUp(false)}>
           ×
         </span>
-        <h2>로그인 인증방법을 선택하세요.</h2>
+        <h2>로그인 방법을 선택해주세요.</h2>
         <div className={styles.signSelect}>
           {platforms.map((platform) => {
             return (

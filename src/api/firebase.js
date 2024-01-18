@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { v4 as uuid } from "uuid";
+import { initializeApp } from 'firebase/app';
+import { v4 as uuid } from 'uuid';
 import {
   getAuth,
   signInWithPopup,
@@ -7,8 +7,8 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   FacebookAuthProvider,
-} from "firebase/auth";
-import { get, getDatabase, ref, remove, set } from "firebase/database";
+} from 'firebase/auth';
+import { get, getDatabase, ref, remove, set } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -24,13 +24,11 @@ const facebookProvider = new FacebookAuthProvider();
 const database = getDatabase(app);
 
 export function login(main) {
-  if (main === "google") {
+  if (main === 'google') {
     signInWithPopup(auth, googleProvider).catch(console.error);
-  } else if (main === "facebook") {
+  } else if (main === 'facebook') {
     signInWithPopup(auth, facebookProvider).catch(console.error);
   }
-
-  // vx6UAhepvFXE1uTmdawKWGxnYzX2
 }
 
 export function logout() {
@@ -45,7 +43,7 @@ export function onUserStateChange(callback) {
 }
 
 async function adminUser(user) {
-  return get(ref(database, "admins")).then((snapshot) => {
+  return get(ref(database, 'admins')).then((snapshot) => {
     if (snapshot.exists()) {
       const admins = snapshot.val();
       const isAdmin = admins.includes(user.uid);
@@ -63,11 +61,12 @@ export async function addNewProduct(product, image) {
     id,
     price: parseInt(product.price),
     image,
-    options: product.options.split(","),
+    options: product.options.split(','),
   });
 }
+
 export async function getProducts() {
-  return get(ref(database, "shop")).then((snapshot) => {
+  return get(ref(database, 'shop')).then((snapshot) => {
     if (snapshot.exists()) {
       // console.log(Object.keys(snapshot.val()))
       // console.log(Object.values(snapshot.val()))

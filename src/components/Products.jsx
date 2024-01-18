@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
-import useProducts from "../hooks/useProducts";
-import { useLocation, useSearchParams } from "react-router-dom";
-import PageNav from "./ui/PageNav";
+import React, { useEffect, useState } from 'react';
+import ProductCard from './ProductCard';
+import useProducts from '../hooks/useProducts';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import PageNav from './ui/PageNav';
 
-import styles from "./css/Products.module.css";
-import { sortSelectFn } from "./js/product";
+import styles from './css/Products.module.css';
+import { sortSelectFn } from './js/product';
 
-import FadeLoader from "react-spinners/FadeLoader";
+import FadeLoader from 'react-spinners/FadeLoader';
 
 export default function Products() {
   const {
@@ -15,28 +15,24 @@ export default function Products() {
   } = useProducts();
 
   const [nowProducts, setNowProducts] = useState(null);
-  const [sortSelect] = useState(["진열방식", "낮은가격", "높은가격"]);
-  const [selected, setSelected] = useState("");
+  const [sortSelect] = useState(['상품등록순', '낮은가격순', '높은가격순']);
+  const [selected, setSelected] = useState('');
 
   const location = useLocation();
   let [query] = useSearchParams();
-  let searchQuery = query.get("s");
+  let searchQuery = query.get('s');
 
-  // let tabUrl = location.pathname.split("/")[1];
-  let sliceUrl = location.pathname.split("/")[2];
+  let sliceUrl = location.pathname.split('/')[2];
 
-  function productTypeFn() {
-    // console.log(tabUrl);
-    // console.log(sliceUrl);
+  // url 경로 이용하여 현재 보여줄 아이템 필터링
+  const productTypeFn = () => {
     if (sliceUrl === undefined) {
       // 상품 전체 페이지
       products && setNowProducts(products);
     } else {
-      // 상품 검색일시
       if (searchQuery) {
-        const searchItem =
-          products &&
-          products.filter((item) => item.title.includes(searchQuery));
+        // 상품 검색일시
+        const searchItem = products && products.filter((item) => item.title.includes(searchQuery));
         setNowProducts(searchItem);
         return;
       }
@@ -48,15 +44,23 @@ export default function Products() {
         });
       setNowProducts(sortProductsArr);
     }
-  }
+  };
 
-  // localStorage 셋팅
-  let myWish = JSON.parse(localStorage.getItem("wishItem"));
-  myWish === null && localStorage.setItem("wishItem", JSON.stringify([]));
-  
+  // 상품셀렉트필터 핸들함수
+  const handleSelectFilter = (e) => {
+    const selectResult = sortSelectFn(e, nowProducts);
+    if (selectResult[1] === '상품등록순') {
+      productTypeFn();
+      setSelected(selectResult[1]);
+      return;
+    }
+    setNowProducts(selectResult[0]);
+    setSelected(selectResult[1]);
+  };
+
   useEffect(() => {
-    setSelected("진열방식");
-    productTypeFn(sliceUrl);
+    setSelected('상품등록순');
+    productTypeFn();
     // eslint-disable-next-line
   }, [products, sliceUrl, searchQuery]);
 
@@ -66,7 +70,7 @@ export default function Products() {
         color="gray"
         loading={isLoading}
         size={25}
-        cssOverride={{ position: "fixed", left: "50%", top: "50%" }}
+        cssOverride={{ position: 'fixed', left: '50%', top: '50%' }}
       />
     );
   }
@@ -78,21 +82,8 @@ export default function Products() {
       <PageNav sliceUrl={sliceUrl} />
       <div className={styles.sortBox}>
         <label className={styles.label} htmlFor="select"></label>
-        <select
-          id="select"
-          className={styles.select}
-          onChange={(e) => {
-            const selectResult = sortSelectFn(e, nowProducts);
-            // console.log(selectResult)
-            selectResult[0] && setNowProducts(selectResult[0]);
-            selectResult[0] && setSelected(selectResult[1]);
-          }}
-          value={selected}
-        >
-          {sortSelect &&
-            sortSelect.map((option, index) => (
-              <option key={index}>{option}</option>
-            ))}
+        <select id="select" className={styles.select} onChange={handleSelectFilter} value={selected}>
+          {sortSelect && sortSelect.map((option, index) => <option key={index}>{option}</option>)}
         </select>
       </div>
       <ul className={styles.ul}>
@@ -100,7 +91,7 @@ export default function Products() {
           nowProducts.map((product) => {
             return <ProductCard key={product.id} product={product} />;
           })}
-          {nowProducts && nowProducts.length === 0 && <span>찾으시는 상품이 없습니다</span>}
+        {nowProducts && nowProducts.length === 0 && <span>찾으시는 상품이 없습니다</span>}
       </ul>
     </>
   );

@@ -4,18 +4,19 @@ import PopUp from '../components/PopUp';
 import Button from '../components/ui/Button';
 import { useAuthContext } from '../context/AuthContext';
 import useCart from '../hooks/useCart';
-import useProducts from "../hooks/useProducts";
+import useProducts from '../hooks/useProducts';
 
-import { BsFillCartCheckFill } from "react-icons/bs";
-import FadeLoader from "react-spinners/FadeLoader";
+import { BsFillCartCheckFill } from 'react-icons/bs';
+import FadeLoader from 'react-spinners/FadeLoader';
 
-import styles from "./css/ProductDetail.module.css";
-
+import styles from './css/ProductDetail.module.css';
 
 export default function ProductDetail() {
   const { user, popUp, setPopUp } = useAuthContext();
   const { addOrUpdateItem } = useCart();
-  const { productsQuery: { isLoading } } = useProducts();
+  const {
+    productsQuery: { isLoading },
+  } = useProducts();
   const {
     state: {
       product: { id, image, title, description, category, price, options },
@@ -26,21 +27,28 @@ export default function ProductDetail() {
   const handleSelect = (e) => setSelected(e.target.value);
   const handleClick = (e) => {
     // 여기에서 장바구니에 추가하면 됨!
-    if(user === null) {
-      // console.log("return");
+    if (user === null) {
       setPopUp(true);
-      return 
+      return;
     }
-    const product = { id, image, title, price, option: selected, quantity: 1};
+    const product = { id, image, title, price, option: selected, quantity: 1 };
     addOrUpdateItem.mutate(product, {
       onSuccess: () => {
         setSuccess('장바구니에 추가 되었습니다.');
-        setTimeout(()=> setSuccess(null), 3000);
-      }
+        setTimeout(() => setSuccess(null), 3000);
+      },
     });
   };
 
-  if(isLoading) return <FadeLoader color="gray" loading={isLoading} size={25} cssOverride={{ position: "fixed", left: "50%", top: "50%", }} />
+  if (isLoading)
+    return (
+      <FadeLoader
+        color="gray"
+        loading={isLoading}
+        size={25}
+        cssOverride={{ position: 'fixed', left: '50%', top: '50%' }}
+      />
+    );
 
   return (
     <>
@@ -51,29 +59,23 @@ export default function ProductDetail() {
         </div>
         <div className={styles.selectBox}>
           <h3 className={styles.title}>{title}</h3>
-          <p className={styles.price}>
-            {price.toLocaleString()}원
-          </p>
+          <p className={styles.price}>{price.toLocaleString()}원</p>
           <p className={styles.description}>{description}</p>
           <div className={styles.option}>
-            <label className={styles.label} htmlFor='select'>
+            <label className={styles.label} htmlFor="select">
               옵션:
             </label>
-            <select
-              id='select'
-              className={styles.select}
-              onChange={handleSelect}
-              value={selected}
-            >
-              {options &&
-                options.map((option, index) => (
-                  <option key={index}>{option}</option>
-                ))}
+            <select id="select" className={styles.select} onChange={handleSelect} value={selected}>
+              {options && options.map((option, index) => <option key={index}>{option}</option>)}
             </select>
           </div>
-          { success && <p className={styles.check}><BsFillCartCheckFill /> {success}</p>}
-          <Button text='장바구니에 추가' onClick={handleClick} />
-          { popUp && <PopUp /> }
+          {success && (
+            <p className={styles.check}>
+              <BsFillCartCheckFill /> {success}
+            </p>
+          )}
+          <Button text="장바구니에 추가" onClick={handleClick} />
+          {popUp && <PopUp />}
         </div>
       </section>
     </>
