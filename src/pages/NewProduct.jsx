@@ -1,25 +1,22 @@
-import React, { useState } from "react";
-import { uploadImage } from "../api/uploader";
-import Button from "../components/ui/Button";
-import useProducts from "../hooks/useProducts";
+import React, { useState } from 'react';
+import { uploadImage } from '../api/uploader';
+import Button from '../components/ui/Button';
+import useProducts from '../hooks/useProducts';
 
-import styles from "./css/NewProduct.module.css";
+import styles from './css/NewProduct.module.css';
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
   const [isUploading, setIsUploading] = useState(false);
   const [success, setSuccess] = useState();
-  const [categorys] = useState(["OUTER", "DENIM", "SHOES"]);
+  const [categorys] = useState(['OUTER', 'DENIM', 'SHOES']);
 
   const { addProduct } = useProducts();
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    // console.log(name);
-    // console.log(value);
-    // console.log(files);
-    if (name === "file") {
+    if (name === 'file') {
       setFile(files && files[0]);
       return;
     }
@@ -35,12 +32,10 @@ export default function NewProduct() {
           { product, url },
           {
             onSuccess: () => {
-              setSuccess("성공적으로 제품이 추가되었습니다.");
-              setProduct({})
+              setSuccess('성공적으로 제품이 추가되었습니다.');
+              setProduct({});
               e.target.reset();
-              setTimeout(() => {
-                setSuccess(null);
-              }, 4000);
+              setTimeout(() => setSuccess(null), 4000);
             },
           }
         );
@@ -54,17 +49,11 @@ export default function NewProduct() {
       {success && <p className={styles.success}>✅ {success}</p>}
       {file && <img src={URL.createObjectURL(file)} alt="local file" />}
       <form className={styles.form} onSubmit={handleSubmit}>
-        <input
-          type="file"
-          accept="image/*"
-          name="file"
-          required
-          onChange={handleChange}
-        />
+        <input type="file" accept="image/*" name="file" required onChange={handleChange} />
         <input
           type="text"
           name="title"
-          value={product.title ?? ""}
+          value={product.title ?? ''}
           placeholder="제품명"
           required
           onChange={handleChange}
@@ -72,7 +61,7 @@ export default function NewProduct() {
         <input
           type="number"
           name="price"
-          value={product.price ?? ""}
+          value={product.price ?? ''}
           placeholder="가격"
           required
           onChange={handleChange}
@@ -97,7 +86,7 @@ export default function NewProduct() {
         <input
           type="text"
           name="description"
-          value={product.description ?? ""}
+          value={product.description ?? ''}
           placeholder="제품 설명"
           required
           onChange={handleChange}
@@ -105,15 +94,12 @@ export default function NewProduct() {
         <input
           type="text"
           name="options"
-          value={product.options ?? ""}
+          value={product.options ?? ''}
           placeholder="옵션들(콤마(,)로 구분)"
           required
           onChange={handleChange}
         />
-        <Button
-          text={isUploading ? "업로드중..." : "제품 등록하기"}
-          disabled={isUploading}
-        />
+        <Button text={isUploading ? '업로드중...' : '제품 등록하기'} disabled={isUploading} />
       </form>
     </section>
   );

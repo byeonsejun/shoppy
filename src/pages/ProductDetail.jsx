@@ -13,7 +13,10 @@ import styles from './css/ProductDetail.module.css';
 
 export default function ProductDetail() {
   const { user, popUp, setPopUp } = useAuthContext();
-  const { addOrUpdateItem } = useCart();
+  const {
+    cartQuery: { data: inCartProducts },
+    addOrUpdateItem,
+  } = useCart();
   const {
     productsQuery: { isLoading },
   } = useProducts();
@@ -25,19 +28,38 @@ export default function ProductDetail() {
   const [success, setSuccess] = useState();
   const [selected, setSelected] = useState(options && options[0]);
   const handleSelect = (e) => setSelected(e.target.value);
-  const handleClick = (e) => {
-    // 여기에서 장바구니에 추가하면 됨!
+
+  const handleClick = () => {
     if (user === null) {
       setPopUp(true);
       return;
     }
+
     const product = { id, image, title, price, option: selected, quantity: 1 };
+
+    const hasSameOptionItem = inCartProducts.some((item) => item.id === id && item.option === selected);
+    const hasSameIdItem = inCartProducts.some((item) => item.id === id);
+
+    if (hasSameOptionItem) {
+      timeOutTextFn('이미 장바구니에 추가된 상품입니다.', 3000);
+      return;
+    }
+
+    if (hasSameIdItem) {
+      timeOutTextFn('이미 추가한 상품은 다른옵션을 선택할수 없습니다.', 3000);
+      return;
+    }
+
     addOrUpdateItem.mutate(product, {
       onSuccess: () => {
-        setSuccess('장바구니에 추가 되었습니다.');
-        setTimeout(() => setSuccess(null), 3000);
+        timeOutTextFn('장바구니에 추가 되었습니다.', 3000);
       },
     });
+  };
+
+  const timeOutTextFn = (text, time) => {
+    setSuccess(`${text}`);
+    setTimeout(() => setSuccess(null), time);
   };
 
   if (isLoading)

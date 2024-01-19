@@ -5,9 +5,7 @@ import { FaEquals } from 'react-icons/fa';
 import PriceCard from '../components/PriceCard';
 import Button from '../components/ui/Button';
 import useCart from '../hooks/useCart';
-
 import FadeLoader from 'react-spinners/FadeLoader';
-
 import styles from './css/MyCart.module.css';
 
 const SHIPPING = 3000;
