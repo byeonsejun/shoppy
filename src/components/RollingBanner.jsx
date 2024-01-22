@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import "swiper/css";
-import "swiper/css/navigation";
+import 'swiper/css';
+import 'swiper/css/navigation';
 
-import { Navigation } from "swiper";
+import { Navigation } from 'swiper';
 
 export default function RollingBanner() {
-  const [bgUrl] = useState([
-    "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041887/mdsection1_i6qvqt.jpg",
-  ]);
+  const [bgUrl] = useState(['https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894702/wiiou5mjgxzojotcm0ds.webp']);
 
   return (
     <section>
@@ -27,13 +25,13 @@ export default function RollingBanner() {
                 <div
                   style={{
                     backgroundImage: `url(${slide})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "50% 50%",
-                    backgroundSize: "cover",
-                    height: "60vh",
-                    maxWidth: "626px",
-                    maxHeight: "781px",
-                    margin: "0 auto",
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: '50% 50%',
+                    backgroundSize: 'cover',
+                    height: '60vh',
+                    maxWidth: '626px',
+                    maxHeight: '781px',
+                    margin: '0 auto',
                   }}
                 ></div>
               </SwiperSlide>

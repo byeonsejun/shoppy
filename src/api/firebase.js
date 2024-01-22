@@ -37,6 +37,7 @@ export function logout() {
 
 export function onUserStateChange(callback) {
   onAuthStateChanged(auth, async (user) => {
+    addUserId(user);
     const updatedUser = user ? await adminUser(user) : null;
     callback(updatedUser);
   });
@@ -55,7 +56,6 @@ async function adminUser(user) {
 
 export async function addNewProduct(product, image) {
   const id = uuid();
-  // return set(ref(database, `shop/${product.category}/${id}`), {
   return set(ref(database, `shop/${id}`), {
     ...product,
     id,
@@ -68,15 +68,8 @@ export async function addNewProduct(product, image) {
 export async function getProducts() {
   return get(ref(database, 'shop')).then((snapshot) => {
     if (snapshot.exists()) {
-      // console.log(Object.keys(snapshot.val()))
-      // console.log(Object.values(snapshot.val()))
-      // console.log(Object.entries(snapshot.val()))
       const copyAllItems = [...Object.values(snapshot.val())];
-      // const allArrCategory = copyAllItems.map((category) => {
-      //   return Object.values(category);
-      // });
       return copyAllItems;
-      // return Object.values(snapshot.val());
     }
     return [];
   });
@@ -104,3 +97,18 @@ export async function getAccount(userId) {
 export async function addOrUpdateToAccount(userId, account) {
   return set(ref(database, `account/${userId}`), account);
 }
+
+const addUserId = (userId) => {
+  if (!userId) return;
+  get(ref(database, `users`)).then((snapshot) => {
+    const currentUser = userId.uid;
+    const users = [...Object.values(snapshot.val())];
+    const hasFirstUser = users.some((user) => user.uid === currentUser);
+    if (!hasFirstUser) {
+      return set(ref(database, `users/${currentUser}`), {
+        uid: currentUser,
+        name: userId.displayName || '',
+      });
+    }
+  });
+};

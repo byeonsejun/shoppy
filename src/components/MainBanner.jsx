@@ -1,44 +1,42 @@
-import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-import styels from "./css/MainBanner.module.css";
+import styels from './css/MainBanner.module.css';
 
-import { Autoplay, Pagination, Navigation } from "swiper";
+import { Autoplay, Pagination, Navigation } from 'swiper';
 
 export default function MainBanner() {
   const [bgUrl, setBgUrl] = useState([
-    "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041510/mainbg1_q9gki5.jpg",
-    "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041519/mainbg2_iespuf.jpg",
-    "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041525/mainbg3_a67rfe.jpg",
+    'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705893944/wmzeuycnkxyldfnqllyz.webp',
+    'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705894160/pctlvk82ff1jglnxbr8u.webp',
+    'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705894235/hjuxcgvbiummki1uufp5.webp',
   ]);
 
   const handleResize = () => {
     if (window.innerWidth > 1200) {
-      // console.log("1200 이상");
       setBgUrl([
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041510/mainbg1_q9gki5.jpg",
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041519/mainbg2_iespuf.jpg",
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041525/mainbg3_a67rfe.jpg",
+        'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705893944/wmzeuycnkxyldfnqllyz.webp',
+        'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705894160/pctlvk82ff1jglnxbr8u.webp',
+        'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705894235/hjuxcgvbiummki1uufp5.webp',
       ]);
     } else {
-      // console.log("1200 이하");
       setBgUrl([
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041693/mbmainbg1_vojf5v.jpg",
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041700/mbmainbg2_h1j4qh.jpg",
-        "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041705/mbmainbg3_cv4bcl.jpg",
+        'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705894339/s3apdxiz3mrpz10rnagw.webp',
+        'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705894383/hmawll6d2csndmpwcapj.webp',
+        'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705894418/fkfz6kwisiv2lcvzajgf.webp',
       ]);
     }
   };
 
   useEffect(() => {
     handleResize();
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -53,7 +51,7 @@ export default function MainBanner() {
         slidesPerView={1}
         loop={true}
         pagination={{
-          type: "fraction",
+          type: 'fraction',
           clickable: true,
         }}
         navigation={true}

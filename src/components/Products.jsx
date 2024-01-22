@@ -15,7 +15,7 @@ export default function Products() {
   } = useProducts();
 
   const [nowProducts, setNowProducts] = useState(null);
-  const [sortSelect] = useState(['상품등록순', '낮은가격순', '높은가격순']);
+  const [sortSelect] = useState(['정렬선택', '낮은가격순', '높은가격순']);
   const [selected, setSelected] = useState('');
 
   const location = useLocation();
@@ -49,7 +49,7 @@ export default function Products() {
   // 상품셀렉트필터 핸들함수
   const handleSelectFilter = (e) => {
     const selectResult = sortSelectFn(e, nowProducts);
-    if (selectResult[1] === '상품등록순') {
+    if (selectResult[1] === '정렬선택') {
       productTypeFn();
       setSelected(selectResult[1]);
       return;
@@ -59,7 +59,7 @@ export default function Products() {
   };
 
   useEffect(() => {
-    setSelected('상품등록순');
+    setSelected('정렬선택');
     productTypeFn();
     // eslint-disable-next-line
   }, [products, sliceUrl, searchQuery]);

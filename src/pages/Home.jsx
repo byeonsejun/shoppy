@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
+
 import Footer from '../components/Footer';
 import MainBanner from '../components/MainBanner';
 import RollingBanner from '../components/RollingBanner';
 import RollingCategory from '../components/RollingCategory';
-import SlideProduct from '../components/SlideProduct';
-
 import useProducts from '../hooks/useProducts';
 import FadeLoader from 'react-spinners/FadeLoader';
+
+const LazySlideProduct = lazy(() => import('./../components/SlideProduct'));
 
 export default function Home() {
   const {
@@ -27,10 +28,21 @@ export default function Home() {
     <>
       <MainBanner />
       <RollingBanner />
-      <SlideProduct info={'NEW'} />
+
+      <Suspense fallback={<FadeLoader color="gray" size={25} />}>
+        <LazySlideProduct info={'NEW'} />
+      </Suspense>
+
       <RollingCategory />
-      <SlideProduct info={'HOT'} />
-      <SlideProduct info={'BEST'} />
+
+      <Suspense fallback={<FadeLoader color="gray" size={25} />}>
+        <LazySlideProduct info={'HOT'} />
+      </Suspense>
+
+      <Suspense fallback={<FadeLoader color="gray" size={25} />}>
+        <LazySlideProduct info={'BEST'} />
+      </Suspense>
+
       <Footer />
     </>
   );

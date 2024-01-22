@@ -1,27 +1,27 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import "swiper/css";
-import "swiper/css/navigation";
-import { Autoplay, Navigation } from "swiper";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Autoplay, Navigation } from 'swiper';
 
-import styles from "./css/RollingCategory.module.css";
+import styles from './css/RollingCategory.module.css';
 
 export default function RollingCategory() {
   const navigate = useNavigate();
   const [bgUrl] = useState([
     {
-      url: "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041929/main_outer_gwbtw9.jpg",
-      link: "OUTER",
+      url: 'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705893288/hyi7vos1jvwvxju8fksx.webp',
+      link: 'OUTER',
     },
     {
-      url: "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041919/main_denim_lkahdx.jpg",
-      link: "DENIM",
+      url: 'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705893213/jpgh4kzvd0wjnxddqjwm.webp',
+      link: 'DENIM',
     },
     {
-      url: "https://res.cloudinary.com/daqjqq0hy/image/upload/v1674041934/main_shoes_pvlevv.jpg",
-      link: "SHOES",
+      url: 'http://res.cloudinary.com/daqjqq0hy/image/upload/v1705893344/z99h7lof0v86pghlh2qk.webp',
+      link: 'SHOES',
     },
   ]);
 

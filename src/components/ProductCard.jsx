@@ -58,12 +58,12 @@ export default function ProductCard({ product }) {
       >
         {currentWish ? (
           <img
-            src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1674042393/before_wish_icon_cvubwo.png"
+            src="http://res.cloudinary.com/daqjqq0hy/image/upload/v1705895168/bjjmssfonw18y63uqfcq.webp"
             alt="wish_after"
           />
         ) : (
           <img
-            src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1674042389/after_wish_icon_rxs6nh.png"
+            src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1705895072/phcpiyxmzqp9o1up6u1l.webp"
             alt="wish_before"
           />
         )}
