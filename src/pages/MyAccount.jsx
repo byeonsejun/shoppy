@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import Button from "../components/ui/Button";
-import { useAuthContext } from "../context/AuthContext";
-import useAccount from "../hooks/useAccount";
-import useCart from "../hooks/useCart";
+import React, { useState } from 'react';
+import Button from '../components/ui/Button';
+import { useAuthContext } from '../context/AuthContext';
+import useAccount from '../hooks/useAccount';
+import useCart from '../hooks/useCart';
 
-import styles from "./css/MyAccount.module.css";
+import styles from './css/MyAccount.module.css';
 
-import FadeLoader from "react-spinners/FadeLoader";
+import FadeLoader from 'react-spinners/FadeLoader';
 
 export default function MyAccount() {
   const { user } = useAuthContext();
@@ -30,9 +30,9 @@ export default function MyAccount() {
   const handleSubmit = (e) => {
     const account = {
       id: user.uid,
-      address: "address",
-      phonNumber: "01088957698",
-      email: "byeonsejun@naver.com",
+      address: 'address',
+      phonNumber: '01088957698',
+      email: 'byeonsejun@naver.com',
     };
     addOrUpdateMyAccount.mutate(account, {
       onSuccess: () => {
@@ -59,18 +59,8 @@ export default function MyAccount() {
       <h2>My Account</h2>
       <br></br>
       <form className={styles.form} onSubmit={handleSubmit}>
-          {
-            user &&
-              <input
-              type="text"
-              name="name"
-              readOnly
-              placeholder={user.displayName}
-              onChange={handleChange}
-            />
-          }
-          
-    
+        {user && <input type="text" name="name" readOnly placeholder={user.displayName} onChange={handleChange} />}
+
         {/* <input
           type="number"
           name="price"

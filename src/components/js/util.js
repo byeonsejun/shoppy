@@ -23,3 +23,17 @@ export const filteredLocalstorage = (array, id) => {
 export const setLocalStorage = (text, array) => {
   localStorage.setItem(text, JSON.stringify(array));
 };
+
+export const handleClickReset = () => {
+  const root = document.getElementById('root');
+  const searchDiv = document.getElementById('search_div');
+  const searchStyle = window.getComputedStyle(searchDiv);
+  root.addEventListener('click', (e) => {
+    const searchDisplay = searchStyle.display;
+    if (e.target.id === 'search_button') {
+      searchDisplay === 'none' ? (searchDiv.style.display = 'flex') : (searchDiv.style.display = 'none');
+    } else {
+      if (e.target.id !== 'search_input') searchDiv.style.display = 'none';
+    }
+  });
+};

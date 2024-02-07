@@ -13,21 +13,6 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root" onclick="handleClickReset(event)"></div>
-    <script>
-      function handleClickReset(e) {
-        const searchButton = document.getElementById('search_button');
-        const searchDiv = document.getElementById('search_div');
-        const searchInput = document.getElementById('search_input');
-        const searchStyle = window.getComputedStyle(searchDiv);
-        const searchDisplay = searchStyle.display;
-
-        if (e.target.id === 'search_button') {
-          searchDisplay === 'none' ? (searchDiv.style.display = 'flex') : (searchDiv.style.display = 'none');
-        } else {
-          if (e.target.id !== 'search_input') searchDiv.style.display = 'none';
-        }
-      }
-    </script>
+    <div id="root"></div>
   </body>
 </html>
