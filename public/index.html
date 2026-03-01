@@ -11,9 +11,21 @@
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <link rel="preconnect" href="https://shoppy-691b2-default-rtdb.asia-southeast1.firebasedatabase.app" crossorigin>
-  <link rel="preconnect" href="https://black-up.kr" crossorigin>
+  <link rel="preconnect" href="https://black-up.kr">
   <link rel="preconnect" href="https://s-gke-apse1-nssi4-3.asia-southeast1.firebasedatabase.app" crossorigin>
   <link rel="preconnect" href="https://res.cloudinary.com">
+
+  <!-- LCP 이미지 Preload (Speed Index 개선 핵심) -->
+  <!-- 데스크탑용 배너 이미지 미리 로드 (1200px 초과 시) -->
+  <link rel="preload" as="image"
+    href="https://res.cloudinary.com/daqjqq0hy/image/upload/w_1920,f_auto,q_auto/v1705893944/wmzeuycnkxyldfnqllyz.webp"
+    media="(min-width: 1201px)">
+
+  <!-- 모바일용 배너 이미지 미리 로드 (1200px 이하 시) -->
+  <link rel="preload" as="image"
+    href="https://res.cloudinary.com/daqjqq0hy/image/upload/w_800,f_auto,q_auto/v1705894339/s3apdxiz3mrpz10rnagw.webp"
+    media="(max-width: 1200px)">
+
   <title>블랙업</title>
 </head>
 
