@@ -8,7 +8,7 @@ export default function ProductCard({ product }) {
   const navigate = useNavigate();
   const [currentWish, setCurrentWish] = useState(false);
   const [showEffect, setShowEffect] = useState(false);
-  const [wishFlag, setWishFlag] = useState(() => returnLocalStorageValue('wishItem'));
+  const [wishFlag, setWishFlag] = useState(returnLocalStorageValue('wishItem'));
 
   const machStorageItem = () => {
     let myWishs = returnLocalStorageValue('wishItem');
@@ -34,7 +34,7 @@ export default function ProductCard({ product }) {
         <div className={styles.productImgBox} id={showEffect ? 'show_img_effct' : ''}>
           <img
             className={styles.productImg}
-            src={optimizeCloudinaryUrl(product.image, 300)}
+            src={optimizeCloudinaryUrl(product.image, 400)}
             alt={product.title}
             width="361"
             height="463"
