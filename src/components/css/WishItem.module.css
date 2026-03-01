@@ -7,6 +7,7 @@
 
 .wishImg {
   width: 12rem;
+  height: auto;
   cursor: pointer;
 }
 
@@ -44,5 +45,4 @@
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
-
 }
