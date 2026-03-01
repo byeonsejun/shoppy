@@ -8,7 +8,7 @@ export default function ProductCard({ product }) {
   const navigate = useNavigate();
   const [currentWish, setCurrentWish] = useState(false);
   const [showEffect, setShowEffect] = useState(false);
-  const [wishFlag, setWishFlag] = useState(returnLocalStorageValue('wishItem'));
+  const [wishFlag, setWishFlag] = useState(() => returnLocalStorageValue('wishItem'));
 
   const machStorageItem = () => {
     let myWishs = returnLocalStorageValue('wishItem');
