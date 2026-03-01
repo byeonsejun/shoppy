@@ -34,7 +34,7 @@ export default function ProductCard({ product }) {
         <div className={styles.productImgBox} id={showEffect ? 'show_img_effct' : ''}>
           <img
             className={styles.productImg}
-            src={optimizeCloudinaryUrl(product.image, 400)}
+            src={optimizeCloudinaryUrl(product.image, 300)}
             alt={product.title}
             width="361"
             height="463"

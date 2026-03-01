@@ -10,22 +10,22 @@ import styles from './css/MainBanner.module.css';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 import { optimizeCloudinaryUrl } from './js/util';
 
-export default function MainBanner() {
-  const slides = [
-    {
-      desktop: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705893944/wmzeuycnkxyldfnqllyz.webp',
-      mobile: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894339/s3apdxiz3mrpz10rnagw.webp',
-    },
-    {
-      desktop: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894160/pctlvk82ff1jglnxbr8u.webp',
-      mobile: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894383/hmawll6d2csndmpwcapj.webp',
-    },
-    {
-      desktop: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894235/hjuxcgvbiummki1uufp5.webp',
-      mobile: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894418/fkfz6kwisiv2lcvzajgf.webp',
-    },
-  ];
+const slides = [
+  {
+    desktop: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705893944/wmzeuycnkxyldfnqllyz.webp',
+    mobile: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894339/s3apdxiz3mrpz10rnagw.webp',
+  },
+  {
+    desktop: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894160/pctlvk82ff1jglnxbr8u.webp',
+    mobile: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894383/hmawll6d2csndmpwcapj.webp',
+  },
+  {
+    desktop: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894235/hjuxcgvbiummki1uufp5.webp',
+    mobile: 'https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894418/fkfz6kwisiv2lcvzajgf.webp',
+  },
+];
 
+export default function MainBanner() {
   return (
     <section className="mainBanner">
       <Swiper
