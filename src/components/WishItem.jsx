@@ -12,7 +12,15 @@ export default function WishItem({ product, product: { id, image, title, price, 
 
   return (
     <li className={styles.item}>
-      <img src={image} alt={title} className={styles.wishImg} onClick={() => goToDetail(category, id)} />
+      <img
+        src={image}
+        alt={title}
+        className={styles.wishImg}
+        onClick={() => goToDetail(category, id)}
+        loading="lazy"
+        width="192"
+        height="246"
+      />
       <div className={styles.wishInfoBox}>
         <div className={styles.wishInfoBoxInner}>
           <p className={styles.category}>{category}</p>
