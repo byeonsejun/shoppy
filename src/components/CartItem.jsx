@@ -3,6 +3,7 @@ import { AiOutlineMinusSquare, AiOutlinePlusSquare } from 'react-icons/ai';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import useCart from '../hooks/useCart';
 
+import { optimizeCloudinaryUrl } from './js/util';
 import styles from './css/CartItem.module.css';
 
 export default function CartItem({ product, product: { id, image, title, option, quantity, price } }) {
@@ -16,7 +17,7 @@ export default function CartItem({ product, product: { id, image, title, option,
   const handleDelete = () => removeItem.mutate(id);
   return (
     <li className={styles.item}>
-      <img src={image} alt={title} className={styles.img} width="192" height="246" />
+      <img src={optimizeCloudinaryUrl(image, 200)} alt={title} className={styles.img} width="192" height="246" />
       <div className={styles.innerBox}>
         <div className={styles.productInfo}>
           <p className={styles.title}>{title}</p>

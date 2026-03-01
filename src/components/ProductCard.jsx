@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './css/ProductCard.module.css';
 import { hanldeWish } from './js/product';
-import { someLocalstorage, returnLocalStorageValue } from './js/util';
+import { someLocalstorage, returnLocalStorageValue, optimizeCloudinaryUrl } from './js/util';
 
 export default function ProductCard({ product }) {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export default function ProductCard({ product }) {
         <div className={styles.productImgBox} id={showEffect ? 'show_img_effct' : ''}>
           <img
             className={styles.productImg}
-            src={product.image}
+            src={optimizeCloudinaryUrl(product.image, 400)}
             alt={product.title}
             width="361"
             height="463"

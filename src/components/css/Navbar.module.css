@@ -104,7 +104,7 @@ nav,
 }
 
 .searchS {
-  display: none;
+  /* display: none; */
   /* display: flex; */
   position: fixed;
   left: 25px;

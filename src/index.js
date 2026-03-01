@@ -3,16 +3,18 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import Home from './pages/Home';
-import AllProducts from './pages/AllProducts';
-import ProductDetail from './pages/ProductDetail';
-import NewProduct from './pages/NewProduct';
-import MyCart from './pages/MyCart';
-import NotFound from './pages/NotFound';
 import ProtectedRoute from './pages/ProtectedRoute';
-import Products from './components/Products';
-import LocalWish from './pages/LocalWish';
-import MyAccount from './pages/MyAccount';
+
+// Code Splitting: Home을 제외한 나머지 컴포넌트는 지연 로딩 적용
+const Home = React.lazy(() => import('./pages/Home'));
+const AllProducts = React.lazy(() => import('./pages/AllProducts'));
+const ProductDetail = React.lazy(() => import('./pages/ProductDetail'));
+const NewProduct = React.lazy(() => import('./pages/NewProduct'));
+const MyCart = React.lazy(() => import('./pages/MyCart'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
+const Products = React.lazy(() => import('./components/Products'));
+const LocalWish = React.lazy(() => import('./pages/LocalWish'));
+const MyAccount = React.lazy(() => import('./pages/MyAccount'));
 
 const router = createBrowserRouter([
   {

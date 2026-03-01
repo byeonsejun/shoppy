@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsFillPencilFill, BsSearch } from 'react-icons/bs';
 
@@ -16,23 +16,32 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const [mbMenuTF, setMbMenuTF] = useState(styles.mbMenuF);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
   const menuBttFn = () => {
     mbMenuTF === styles.mbMenuF ? setMbMenuTF(styles.mbMenuT) : setMbMenuTF(styles.mbMenuF);
   };
 
-  const searchDiv = document.getElementById('search_div');
   const searchOnOff = (e) => {
-    e.preventDefault();
+    e.stopPropagation(); // 이벤트가 상위(document)로 전파되어 전역 핸들러가 실행되는 것을 막습니다.
+    setIsSearchVisible((prev) => !prev);
   };
 
   const goToSearch = (e) => {
     e.preventDefault();
     setSearchValue('');
-    searchDiv.style.display = 'none';
+    setIsSearchVisible(false);
     navigate(`/shop/?s=${searchValue}`);
   };
+
+  useEffect(() => {
+    if (!isSearchVisible) return;
+
+    const handleWindowClick = () => setIsSearchVisible(false);
+    window.addEventListener('click', handleWindowClick);
+    return () => window.removeEventListener('click', handleWindowClick);
+  }, [isSearchVisible]);
 
   return (
     <header className={styles.header}>
@@ -58,7 +67,12 @@ export default function Navbar() {
           <div id="search_button" className={styles.searchBox} onClick={searchOnOff}>
             SEARCH
           </div>
-          <div className={styles.searchS} id="search_div">
+          <div
+            className={styles.searchS}
+            id="search_div"
+            style={{ display: isSearchVisible ? 'flex' : 'none' }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <form onSubmit={goToSearch} className={styles.searchBoxInner}>
               <input
                 id="search_input"

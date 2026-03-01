@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { optimizeCloudinaryUrl } from './js/util';
 import styles from './css/WishItem.module.css';
 
 export default function WishItem({ product, product: { id, image, title, price, category }, deleteWish }) {
@@ -13,7 +14,7 @@ export default function WishItem({ product, product: { id, image, title, price, 
   return (
     <li className={styles.item}>
       <img
-        src={image}
+        src={optimizeCloudinaryUrl(image, 200)}
         alt={title}
         className={styles.wishImg}
         onClick={() => goToDetail(category, id)}

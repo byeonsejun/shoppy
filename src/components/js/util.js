@@ -24,16 +24,9 @@ export const setLocalStorage = (text, array) => {
   localStorage.setItem(text, JSON.stringify(array));
 };
 
-export const handleClickReset = () => {
-  const root = document.getElementById('root');
-  const searchDiv = document.getElementById('search_div');
-  const searchStyle = window.getComputedStyle(searchDiv);
-  root.addEventListener('click', (e) => {
-    const searchDisplay = searchStyle.display;
-    if (e.target.id === 'search_button') {
-      searchDisplay === 'none' ? (searchDiv.style.display = 'flex') : (searchDiv.style.display = 'none');
-    } else {
-      if (e.target.id !== 'search_input') searchDiv.style.display = 'none';
-    }
-  });
+export const optimizeCloudinaryUrl = (url, width) => {
+  if (!url || !url.includes('res.cloudinary.com')) return url;
+  const parts = url.split('/upload/');
+  if (parts.length < 2) return url;
+  return `${parts[0]}/upload/w_${width},f_auto,q_auto/${parts[1]}`;
 };
