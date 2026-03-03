@@ -13,6 +13,8 @@ export default function NotFound() {
           <img
             src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1705894926/loc0pmff7yhfqo8pm8r0.webp"
             alt="errorPage"
+            width="400"
+            height="300"
           />
           <strong>찾으시는 페이지가 없습니다.</strong>
           <p>

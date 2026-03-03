@@ -19,7 +19,11 @@ export default function Navbar() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
-  const menuBttFn = () => {
+  const menuBttFn = (closeMenu = true) => {
+    if (closeMenu === true) {
+      setMbMenuTF(styles.mbMenuF);
+      return;
+    }
     mbMenuTF === styles.mbMenuF ? setMbMenuTF(styles.mbMenuT) : setMbMenuTF(styles.mbMenuF);
   };
 
@@ -45,7 +49,7 @@ export default function Navbar() {
 
   return (
     <header className={styles.header}>
-      <button type="button" className={mbMenuTF} onClick={() => menuBttFn()}>
+      <button type="button" className={mbMenuTF} onClick={() => menuBttFn('이거아님?')}>
         <span></span>
         <span></span>
         <span></span>
@@ -58,7 +62,9 @@ export default function Navbar() {
               {categorys.map((category, idx) => {
                 return (
                   <li key={idx} className={styles.productItem}>
-                    <Link to={`/shop/${category}`}>{category}</Link>
+                    <Link to={`/shop/${category}`} onClick={() => menuBttFn(true)}>
+                      {category}
+                    </Link>
                   </li>
                 );
               })}
@@ -89,14 +95,16 @@ export default function Navbar() {
           </div>
         </nav>
         <h1 className={styles.logo}>
-          <Link to="/">
+          <Link to="/" onClick={() => menuBttFn(true)}>
             <span className="blind">BLACKUP</span>
           </Link>
         </h1>
         <nav className={styles.navMenu}>
-          <Link to="/wish"> WISHLIST </Link>
+          <Link to="/wish" onClick={() => menuBttFn(true)}>
+            WISHLIST
+          </Link>
           {user && (
-            <Link to="/carts">
+            <Link to="/carts" onClick={() => menuBttFn(true)}>
               <CartStatus />
             </Link>
           )}
@@ -108,6 +116,7 @@ export default function Navbar() {
                 lineHeight: '2rem',
               }}
               title="관리자 상품등록 페이지"
+              onClick={() => menuBttFn(true)}
             >
               <BsFillPencilFill />
             </Link>
@@ -118,7 +127,13 @@ export default function Navbar() {
               Login
             </button>
           ) : (
-            <button className={styles.loginButton} onClick={logout}>
+            <button
+              className={styles.loginButton}
+              onClick={async () => {
+                await logout();
+                menuBttFn(true);
+              }}
+            >
               Logout
             </button>
           )}

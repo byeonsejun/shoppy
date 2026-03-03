@@ -47,7 +47,7 @@ export default function NewProduct() {
     <section className={styles.newProductSection}>
       <h2>새로운 제품 등록</h2>
       {success && <p className={styles.success}>✅ {success}</p>}
-      {file && <img src={URL.createObjectURL(file)} alt="local file" />}
+      {file && <img src={URL.createObjectURL(file)} alt="미리보기" width="200" height="200" />}
       <form className={styles.form} onSubmit={handleSubmit}>
         <input type="file" accept="image/*" name="file" required onChange={handleChange} />
         <input

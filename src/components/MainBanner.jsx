@@ -56,8 +56,11 @@ export default function MainBanner() {
                     className={styles.bannerImg}
                     src={optimizeCloudinaryUrl(slide.desktop, 1920)}
                     alt={`Main Banner ${idx + 1}`}
+                    width={1920}
+                    height={600}
                     fetchpriority={idx === 0 ? 'high' : 'auto'}
                     loading={idx === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
                   />
                 </picture>
               </div>

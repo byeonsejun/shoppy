@@ -77,7 +77,7 @@ export default function ProductDetail() {
       <h2 className={styles.h2}>{category}</h2>
       <section className={styles.section}>
         <div className={styles.imgBox}>
-          <img src={image} alt={title} />
+          <img src={image} alt={title} width="600" height="600" loading="eager" decoding="async" />
         </div>
         <div className={styles.selectBox}>
           <h3 className={styles.title}>{title}</h3>
