@@ -60,7 +60,7 @@ export default function MainBanner() {
                     height={600}
                     fetchpriority={idx === 0 ? 'high' : 'auto'}
                     loading={idx === 0 ? 'eager' : 'lazy'}
-                    decoding="async"
+                    decoding="sync"
                   />
                 </picture>
               </div>

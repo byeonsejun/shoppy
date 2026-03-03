@@ -23,7 +23,8 @@ export default function SlideProduct({ info }) {
     <section className={`product_slide_wrap ${info}`} aria-label={`${info} 상품 목록`}>
       <h3>{info} LIST</h3>
       <Swiper
-        tag="ul"
+        role="list"
+        aria-label={`${info} 상품 슬라이드`}
         grabCursor={true}
         slidesPerView={1.2}
         spaceBetween={20}
@@ -46,7 +47,7 @@ export default function SlideProduct({ info }) {
         {items &&
           items.map((item) => {
             return (
-              <SwiperSlide key={item.id} tag="li">
+              <SwiperSlide key={item.id} role="listitem">
                 <ProductCard product={item} asListItem={false} />
               </SwiperSlide>
             );

@@ -81,6 +81,6 @@ export default function ProductCard({ product, asListItem = true }) {
   if (asListItem) {
     return <li className={styles.li}>{cardContent}</li>;
   }
-  /* SlideProduct 내부: ul > li(SwiperSlide) 안에 들어가므로 li 대신 같은 크기 래퍼(styles.li)로 감싸서 카드 크기 통일 */
+  /* SlideProduct 내부: div(role=list) > .swiper-slide(role=listitem) 안에 들어가므로 같은 크기 래퍼(styles.li)로 감싸서 카드 크기 통일 */
   return <div className={styles.li}>{cardContent}</div>;
 }

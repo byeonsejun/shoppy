@@ -114,20 +114,23 @@ section .swiper-button-prev:after {
   right: 75px;
 }
 
-/* slideProduct.jsx 관련 (Swiper가 ul/li로 렌더될 때 목록 스타일 제거 + 슬라이드 크기 통일) */
+/* slideProduct.jsx 관련 (Swiper div + role=list, 슬라이드는 .swiper-slide / role=listitem) */
 .product_slide_wrap .mySwiper {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
-/* Swiper가 ul > li로 렌더될 때 각 슬라이드(li) 안의 카드 래퍼가 동일한 크기로 보이도록 */
-.product_slide_wrap .mySwiper li {
+.product_slide_wrap .mySwiper[role="list"] {
+  list-style: none;
+}
+/* 슬라이드(.swiper-slide) 안의 카드 래퍼가 동일한 크기로 보이도록 (기존 li와 동일 스타일 유지) */
+.product_slide_wrap .mySwiper .swiper-slide {
   box-sizing: border-box;
   height: auto;
   display: flex;
   align-items: stretch;
 }
-.product_slide_wrap .mySwiper li > div {
+.product_slide_wrap .mySwiper .swiper-slide > div {
   width: 100%;
   min-width: 0;
 }
@@ -144,8 +147,8 @@ section .swiper-button-prev:after {
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #111111; /* 어두운 텍스트 */
-  background-color: #ffd600; /* 충분한 대비의 배경색 (밝은 노랑) */
+  color: #ffffff;
+  background-color: #1a1a1a;
 }
 
 section.product_slide_wrap .swiper {
