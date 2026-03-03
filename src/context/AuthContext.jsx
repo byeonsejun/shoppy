@@ -29,10 +29,12 @@ export function AuthContextProvider({ children }) {
   };
 
   useEffect(() => {
-    onUserStateChange((user) => {
-      setUser(user);
-    });
     returnLocalStorageValue('wishItem');
+    const useIdle = typeof requestIdleCallback !== 'undefined';
+    const id = useIdle
+      ? requestIdleCallback(() => onUserStateChange((user) => setUser(user)), { timeout: 300 })
+      : setTimeout(() => onUserStateChange((user) => setUser(user)), 0);
+    return () => (useIdle ? cancelIdleCallback(id) : clearTimeout(id));
   }, []);
 
   return (

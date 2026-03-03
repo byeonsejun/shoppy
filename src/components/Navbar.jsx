@@ -49,7 +49,12 @@ export default function Navbar() {
 
   return (
     <header className={styles.header}>
-      <button type="button" className={mbMenuTF} onClick={() => menuBttFn('이거아님?')}>
+      <button
+        type="button"
+        className={mbMenuTF}
+        onClick={() => menuBttFn('이거아님?')}
+        aria-label="메뉴 열기"
+      >
         <span></span>
         <span></span>
         <span></span>
@@ -70,7 +75,19 @@ export default function Navbar() {
               })}
             </ul>
           </div>
-          <div id="search_button" className={styles.searchBox} onClick={searchOnOff}>
+          <div
+            id="search_button"
+            className={styles.searchBox}
+            onClick={searchOnOff}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key !== 'Enter' && e.key !== ' ') return;
+              e.preventDefault();
+              searchOnOff(e);
+            }}
+            aria-label="검색 열기"
+          >
             SEARCH
           </div>
           <div
@@ -88,7 +105,7 @@ export default function Navbar() {
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
               />
-              <button className={styles.searchIconBox}>
+              <button type="submit" className={styles.searchIconBox} aria-label="검색">
                 <BsSearch className={styles.searchIcon} />
               </button>
             </form>
@@ -123,7 +140,11 @@ export default function Navbar() {
           )}
           {user && <User user={user} />}
           {!user ? (
-            <button className={styles.loginButton} onClick={() => setPopUp(true)}>
+            <button
+              className={styles.loginButton}
+              onClick={() => setPopUp(true)}
+              aria-label="로그인"
+            >
               Login
             </button>
           ) : (
@@ -133,6 +154,7 @@ export default function Navbar() {
                 await logout();
                 menuBttFn(true);
               }}
+              aria-label="로그아웃"
             >
               Logout
             </button>

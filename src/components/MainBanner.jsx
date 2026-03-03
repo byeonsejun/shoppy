@@ -50,17 +50,21 @@ export default function MainBanner() {
             <SwiperSlide key={idx} className={styles.slideWrapBox}>
               <div className={styles.slideInner}>
                 <picture className={styles.slidePicture}>
-                  {/* 화면 너비가 1200px 이하일 때 모바일 이미지를 사용 (기존 JS 로직 대체) */}
-                  <source media="(max-width: 1200px)" srcSet={optimizeCloudinaryUrl(slide.mobile, 800)} />
+                  {/* 모바일 LCP 개선: 768px 이하는 480w, 그 이상은 800w (srcset으로 뷰포트별 용량 최소화) */}
+                  <source
+                    media="(max-width: 1200px)"
+                    srcSet={`${optimizeCloudinaryUrl(slide.mobile, 480)} 480w, ${optimizeCloudinaryUrl(slide.mobile, 800)} 800w`}
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
                   <img
                     className={styles.bannerImg}
                     src={optimizeCloudinaryUrl(slide.desktop, 1920)}
                     alt={`Main Banner ${idx + 1}`}
                     width={1920}
                     height={600}
-                    fetchpriority={idx === 0 ? 'high' : 'auto'}
+                    fetchPriority={idx === 0 ? 'high' : 'auto'}
                     loading={idx === 0 ? 'eager' : 'lazy'}
-                    decoding="sync"
+                    decoding={idx === 0 ? 'sync' : 'async'}
                   />
                 </picture>
               </div>
