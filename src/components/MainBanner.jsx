@@ -50,25 +50,16 @@ export default function MainBanner() {
             <SwiperSlide key={idx} className={styles.slideWrapBox}>
               <div className={styles.slideInner}>
                 <picture className={styles.slidePicture}>
-                  {/* 첫 슬라이드(LCP): 단일 URL로 즉시 요청 시작. 나머지는 srcset 허용 */}
-                  <source
-                    media="(max-width: 1200px)"
-                    srcSet={
-                      idx === 0
-                        ? optimizeCloudinaryUrl(slide.mobile, 480)
-                        : `${optimizeCloudinaryUrl(slide.mobile, 480)} 480w, ${optimizeCloudinaryUrl(slide.mobile, 800)} 800w`
-                    }
-                    sizes={idx === 0 ? undefined : '(max-width: 768px) 100vw, 800px'}
-                  />
+                  <source media="(max-width: 1200px)" srcSet={optimizeCloudinaryUrl(slide.mobile, 800)} />
                   <img
                     className={styles.bannerImg}
                     src={optimizeCloudinaryUrl(slide.desktop, 1920)}
                     alt={`Main Banner ${idx + 1}`}
                     width={1920}
                     height={600}
-                    fetchPriority={idx === 0 ? 'high' : 'auto'}
+                    fetchpriority={idx === 0 ? 'high' : 'auto'}
                     loading={idx === 0 ? 'eager' : 'lazy'}
-                    decoding={idx === 0 ? 'sync' : 'async'}
+                    decoding="sync"
                   />
                 </picture>
               </div>
