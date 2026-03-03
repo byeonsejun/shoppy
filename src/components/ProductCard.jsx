@@ -29,15 +29,15 @@ export default function ProductCard({ product }) {
   }, [wishFlag]);
 
   return (
-    <div className={styles.cardBox}>
-      <li className={styles.li}>
+    <li className={styles.li}>
+      <div className={styles.cardBox}>
         <div className={styles.productImgBox} id={showEffect ? 'show_img_effct' : ''}>
           <img
             className={styles.productImg}
-            src={optimizeCloudinaryUrl(product.image, 400)}
+            src={optimizeCloudinaryUrl(product.image, 320)}
             alt={product.title}
-            width="361"
-            height="463"
+            width="283"
+            height="364"
             loading="lazy"
             onClick={() => {
               // 이미지 클릭 시 상품 상세 페이지로 이동
@@ -53,30 +53,30 @@ export default function ProductCard({ product }) {
           <p>{`${product.price.toLocaleString()}원`}</p>
           <span>{product.description}</span>
         </div>
-      </li>
-      <span
-        className={styles.cardWishBtt}
-        onClick={() => {
-          addEffectImg();
-          setWishFlag(hanldeWish(product));
-        }}
-      >
-        {currentWish ? (
-          <img
-            src="http://res.cloudinary.com/daqjqq0hy/image/upload/v1705895168/bjjmssfonw18y63uqfcq.webp"
-            alt="wish_after"
-            width="15"
-            height="15"
-          />
-        ) : (
-          <img
-            src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1705895072/phcpiyxmzqp9o1up6u1l.webp"
-            alt="wish_before"
-            width="15"
-            height="15"
-          />
-        )}
-      </span>
-    </div>
+        <span
+          className={styles.cardWishBtt}
+          onClick={() => {
+            addEffectImg();
+            setWishFlag(hanldeWish(product));
+          }}
+        >
+          {currentWish ? (
+            <img
+              src="http://res.cloudinary.com/daqjqq0hy/image/upload/v1705895168/bjjmssfonw18y63uqfcq.webp"
+              alt="wish_after"
+              width="15"
+              height="15"
+            />
+          ) : (
+            <img
+              src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1705895072/phcpiyxmzqp9o1up6u1l.webp"
+              alt="wish_before"
+              width="15"
+              height="15"
+            />
+          )}
+        </span>
+      </div>
+    </li>
   );
 }

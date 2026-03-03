@@ -2,12 +2,12 @@ import React, { lazy, Suspense } from 'react';
 
 import Footer from '../components/Footer';
 import MainBanner from '../components/MainBanner';
-import RollingBanner from '../components/RollingBanner';
-import RollingCategory from '../components/RollingCategory';
 import useProducts from '../hooks/useProducts';
 import FadeLoader from 'react-spinners/FadeLoader';
 
 const LazySlideProduct = lazy(() => import('./../components/SlideProduct'));
+const LazyRollingBanner = lazy(() => import('../components/RollingBanner'));
+const LazyRollingCategory = lazy(() => import('../components/RollingCategory'));
 
 export default function Home() {
   const {
@@ -27,13 +27,17 @@ export default function Home() {
   return (
     <>
       <MainBanner />
-      <RollingBanner />
+      <Suspense fallback={null}>
+        <LazyRollingBanner />
+      </Suspense>
 
       <Suspense fallback={<FadeLoader color="gray" size={25} />}>
         <LazySlideProduct info={'NEW'} />
       </Suspense>
 
-      <RollingCategory />
+      <Suspense fallback={null}>
+        <LazyRollingCategory />
+      </Suspense>
 
       <Suspense fallback={<FadeLoader color="gray" size={25} />}>
         <LazySlideProduct info={'HOT'} />

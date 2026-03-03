@@ -118,6 +118,20 @@ section .swiper-button-prev:after {
 .product_slide_wrap {
   padding: 0 25px;
 }
+
+.product_slide_wrap > h3 {
+  display: inline-block;
+  margin-left: 0.25rem;
+  margin-top: 1rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #111111; /* 어두운 텍스트 */
+  background-color: #ffd600; /* 충분한 대비의 배경색 (밝은 노랑) */
+}
+
 section.product_slide_wrap .swiper {
   padding-top: 50px;
 }

@@ -12,7 +12,9 @@ function App() {
       <AuthContextProvider>
         <Navbar />
         <Suspense fallback={<div>Loading...</div>}>
-          <Outlet />
+          <main>
+            <Outlet />
+          </main>
         </Suspense>
       </AuthContextProvider>
     </QueryClientProvider>
