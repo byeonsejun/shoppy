@@ -11,7 +11,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <AuthContextProvider>
         <Navbar />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={null}>
           <main>
             <Outlet />
           </main>

@@ -50,11 +50,15 @@ export default function MainBanner() {
             <SwiperSlide key={idx} className={styles.slideWrapBox}>
               <div className={styles.slideInner}>
                 <picture className={styles.slidePicture}>
-                  {/* 모바일 LCP 개선: 768px 이하는 480w, 그 이상은 800w (srcset으로 뷰포트별 용량 최소화) */}
+                  {/* 첫 슬라이드(LCP): 단일 URL로 즉시 요청 시작. 나머지는 srcset 허용 */}
                   <source
                     media="(max-width: 1200px)"
-                    srcSet={`${optimizeCloudinaryUrl(slide.mobile, 480)} 480w, ${optimizeCloudinaryUrl(slide.mobile, 800)} 800w`}
-                    sizes="(max-width: 768px) 100vw, 800px"
+                    srcSet={
+                      idx === 0
+                        ? optimizeCloudinaryUrl(slide.mobile, 480)
+                        : `${optimizeCloudinaryUrl(slide.mobile, 480)} 480w, ${optimizeCloudinaryUrl(slide.mobile, 800)} 800w`
+                    }
+                    sizes={idx === 0 ? undefined : '(max-width: 768px) 100vw, 800px'}
                   />
                   <img
                     className={styles.bannerImg}

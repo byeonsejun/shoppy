@@ -14,40 +14,42 @@ export default function Home() {
     productsQuery: { isLoading },
   } = useProducts();
 
-  if (isLoading)
-    return (
-      <FadeLoader
-        color="gray"
-        loading={isLoading}
-        size={25}
-        cssOverride={{ position: 'fixed', left: '50%', top: '50%' }}
-      />
-    );
-
   return (
     <>
       <MainBanner />
-      <Suspense fallback={null}>
-        <LazyRollingBanner />
-      </Suspense>
+      {isLoading && (
+        <FadeLoader
+          color="gray"
+          loading={isLoading}
+          size={25}
+          cssOverride={{ position: 'fixed', left: '50%', top: '50%' }}
+        />
+      )}
+      {!isLoading && (
+        <>
+          <Suspense fallback={null}>
+            <LazyRollingBanner />
+          </Suspense>
 
-      <Suspense fallback={<FadeLoader color="gray" size={25} />}>
-        <LazySlideProduct info={'NEW'} />
-      </Suspense>
+          <Suspense fallback={<FadeLoader color="gray" size={25} />}>
+            <LazySlideProduct info={'NEW'} />
+          </Suspense>
 
-      <Suspense fallback={null}>
-        <LazyRollingCategory />
-      </Suspense>
+          <Suspense fallback={null}>
+            <LazyRollingCategory />
+          </Suspense>
 
-      <Suspense fallback={<FadeLoader color="gray" size={25} />}>
-        <LazySlideProduct info={'HOT'} />
-      </Suspense>
+          <Suspense fallback={<FadeLoader color="gray" size={25} />}>
+            <LazySlideProduct info={'HOT'} />
+          </Suspense>
 
-      <Suspense fallback={<FadeLoader color="gray" size={25} />}>
-        <LazySlideProduct info={'BEST'} />
-      </Suspense>
+          <Suspense fallback={<FadeLoader color="gray" size={25} />}>
+            <LazySlideProduct info={'BEST'} />
+          </Suspense>
 
-      <Footer />
+          <Footer />
+        </>
+      )}
     </>
   );
 }

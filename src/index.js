@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import Home from './pages/Home';
 import ProtectedRoute from './pages/ProtectedRoute';
 
-// Code Splitting: Home은 즉시 로딩하고, 나머지는 지연 로딩 적용
+// Code Splitting: 첫 화면 LCP는 index.html 크리티컬 이미지가 담당, Home도 지연 로딩으로 TBT 감소
+const Home = React.lazy(() => import('./pages/Home'));
 const AllProducts = React.lazy(() => import('./pages/AllProducts'));
 const ProductDetail = React.lazy(() => import('./pages/ProductDetail'));
 const NewProduct = React.lazy(() => import('./pages/NewProduct'));
