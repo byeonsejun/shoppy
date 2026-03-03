@@ -63,7 +63,7 @@
 
 .textBox span {
   margin-bottom: 0.5rem;
-  color: gray;
+  color: #374151;
 }
 
 @media (max-width: 1200px) {
