@@ -2,7 +2,8 @@ import { initializeApp } from 'firebase/app';
 import { v4 as uuid } from 'uuid';
 import {
   getAuth,
-  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   signOut,
   onAuthStateChanged,
   GoogleAuthProvider,
@@ -25,10 +26,15 @@ const database = getDatabase(app);
 
 export function login(main) {
   if (main === 'google') {
-    signInWithPopup(auth, googleProvider).catch(console.error);
+    signInWithRedirect(auth, googleProvider).catch(console.error);
   } else if (main === 'facebook') {
-    signInWithPopup(auth, facebookProvider).catch(console.error);
+    signInWithRedirect(auth, facebookProvider).catch(console.error);
   }
+}
+
+/** 앱 로드 시 리다이렉트 로그인 결과 처리 (콘솔 COOP 경고 방지용) */
+export function handleRedirectResult() {
+  return getRedirectResult(auth).catch(console.error);
 }
 
 export function logout() {

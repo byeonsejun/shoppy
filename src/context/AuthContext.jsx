@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { login, logout, onUserStateChange } from '../api/firebase';
+import { login, logout, onUserStateChange, handleRedirectResult } from '../api/firebase';
 
 import { BsGoogle } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
@@ -29,6 +29,7 @@ export function AuthContextProvider({ children }) {
   };
 
   useEffect(() => {
+    handleRedirectResult();
     onUserStateChange((user) => {
       setUser(user);
     });
