@@ -1,29 +1,33 @@
 .sortBox {
   text-align: right;
+  padding: 0 48px;
 }
 
 .label {
-  color: black;
+  color: #111111;
   font-weight: 700;
 }
 
 .select {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  padding: 0.5rem;
-  color: black;
-  border-width: 2px;
-  border-color: black;
-  border-style: dashed;
-  margin: 1rem;
-  font-size: 1rem;
+  outline: none;
+  padding: 0.55rem 2rem 0.55rem 0.9rem;
+  color: #111111;
+  background-color: transparent;
+  border: 1px solid #d8d3cc;
+  border-radius: 2px;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
 }
 
 .ul {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 3rem 1rem;
-  padding: 1rem;
+  gap: 3.5rem 1.6rem;
+  padding: 1rem 48px 2rem;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 @media (max-width: 1200px) {
@@ -33,9 +37,13 @@
 }
 
 @media (max-width: 768px) {
+  .sortBox {
+    padding: 0 16px;
+  }
   .ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding: 0.5rem;
+    padding: 0.5rem 16px 2rem;
+    gap: 2rem 1rem;
   }
 }
 

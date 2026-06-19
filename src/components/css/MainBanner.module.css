@@ -1,6 +1,66 @@
+.heroSection {
+  position: relative;
+}
+
+/* 하단 스크림 (오버레이 텍스트 가독성) */
+.heroSection::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 55%;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.heroOverlay {
+  position: absolute;
+  left: 56px;
+  bottom: 64px;
+  z-index: 3;
+  color: #ffffff;
+  max-width: 620px;
+}
+.heroEyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+.heroTitle {
+  font-size: 76px;
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+}
+.heroSub {
+  margin-top: 20px;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  opacity: 0.92;
+}
+.heroBtn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 34px;
+  border: 1.5px solid #ffffff;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.heroBtn:hover {
+  background-color: #ffffff;
+  color: #111111;
+}
+
 .slideInner {
-  height: 80vh;
-  max-height: 828.75px;
+  height: 92vh;
+  max-height: 920px;
 }
 
 .slidePicture {
@@ -22,7 +82,27 @@
     max-height: none;
   }
   .bannerImg {
-    object-fit: contain;
+    object-fit: cover;
     height: 80dvh;
+  }
+  .heroOverlay {
+    left: 24px;
+    bottom: 40px;
+  }
+  .heroTitle {
+    font-size: 46px;
+  }
+  .heroSub {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 36px;
+  }
+  .heroOverlay {
+    left: 16px;
+    bottom: 32px;
   }
 }

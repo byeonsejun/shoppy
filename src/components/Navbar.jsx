@@ -113,7 +113,7 @@ export default function Navbar() {
         </nav>
         <h1 className={styles.logo}>
           <Link to="/" onClick={() => menuBttFn(true)}>
-            <span className="blind">BLACKUP</span>
+            <span className={styles.wordmark}>BLACKUP</span>
           </Link>
         </h1>
         <nav className={styles.navMenu}>

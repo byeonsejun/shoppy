@@ -1,97 +1,107 @@
-.h2 {
-  color: black;
-  text-transform: capitalize;
-  font-weight: 700;
-  margin: 1rem 3rem 0 3rem;
-}
-
 .section {
   display: flex;
-  padding: 1rem;
   flex-direction: row;
-  max-width: 1280px;
-  margin: 0 auto;
+  gap: 3rem;
+  margin: 0 auto 120px;
 }
 
 .imgBox {
   width: 100%;
-  padding: 0 1rem;
-  flex-basis: 58%;
+  flex-basis: 56%;
 }
 .imgBox > img {
   width: 100%;
+  height: auto;
+  background-color: #efece7;
 }
 
 .selectBox {
   width: 100%;
   display: flex;
-  flex-basis: 42%;
-  padding: 1rem;
+  flex-basis: 44%;
   flex-direction: column;
+  padding-top: 0.5rem;
+}
+
+.cat {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #8a857e;
+  margin-bottom: 0.75rem;
 }
 
 .title {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+  font-size: 1.8rem;
+  line-height: 1.3;
   font-weight: 700;
-  padding: 0.5rem 0;
+  color: #111111;
 }
 
 .price {
   font-size: 1.5rem;
   line-height: 2rem;
-  font-weight: 700;
-  padding: 0.5rem 0;
-  color: black;
+  font-weight: 800;
+  margin-top: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e7e4df;
+  color: #111111;
 }
 
 .description {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  padding: 1rem 0;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #6b6760;
+  padding: 1.5rem 0;
 }
 
 .option {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .label {
-  color: black;
+  color: #111111;
   font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .select {
   flex: 1 1;
-  margin: 1rem;
-  border-width: 2px;
-  border-style: dashed;
-  border-color: black;
-  padding: 0.5rem;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
+  padding: 0.8rem 1rem;
+  border: 1px solid #d8d3cc;
+  border-radius: 2px;
+  outline: none;
+  font-size: 0.9rem;
+  background-color: #ffffff;
+  cursor: pointer;
 }
 
 .check {
-  background-color: black;
+  background-color: #111111;
   display: flex;
   align-items: center;
-  margin: 0.5rem 0 ;
-  padding: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.85rem;
   color: white;
-  text-align: center;
+  font-size: 0.9rem;
   justify-content: center;
 }
 .check svg {
   margin-right: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
-
-
 
 @media (max-width: 768px) {
   .section {
     flex-direction: column;
+    gap: 1.5rem;
   }
-
+  .title {
+    font-size: 1.5rem;
+  }
 }

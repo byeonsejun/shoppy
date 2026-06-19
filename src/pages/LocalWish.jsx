@@ -15,9 +15,12 @@ export default function LocalWish() {
   };
 
   return (
-    <section className={styles.wishSection}>
-      <h2 className={styles.wishSectionTitle}>My Wish List</h2>
-      {!hasWishs && <p>Wish List에 상품이 없습니다.</p>}
+    <section className={`pageShell ${styles.wishSection}`}>
+      <div className="pageHeader center">
+        <span className="pageEyebrow">SAVED ITEMS</span>
+        <h2 className="pageTitle">My Wish List</h2>
+      </div>
+      {!hasWishs && <p className={styles.empty}>위시리스트에 담긴 상품이 없습니다.</p>}
       {hasWishs && (
         <ul className={styles.wishSectionUl}>
           {myWishItem &&

@@ -1,51 +1,48 @@
 .section {
-  padding: 2rem;
   display: flex;
   flex-direction: column;
-}
-
-.h2 {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  padding-bottom: 1rem;
-  font-weight: 700;
-  text-align: center;
-  border-bottom-width: 1px;
-  border-color: black;
+  margin-bottom: 120px;
 }
 
 .notProduct {
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  color: #6b6760;
+  text-align: center;
 }
 
 .ul {
-  padding: 1rem 2rem;
-  margin-bottom: 2rem;
-  border-bottom-width: 1px;
-  border-color: black;
+  padding: 0;
+  margin-bottom: 2.5rem;
 }
 
 .bottomBox {
   display: flex;
   margin-bottom: 1.5rem;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-evenly;
-  padding: 0.5rem;
+  gap: 0.75rem;
 }
 
-.shrink{
+.shrink {
   flex-shrink: 0;
+  align-self: center;
+  color: #b8b3ab;
+  font-size: 1.1rem;
+}
+
+.orderBtn {
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
   .bottomBox {
     flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
+    gap: 0.5rem;
   }
-
-  .ul {
-    padding: 1rem 0.25rem;
+  .shrink {
+    display: none;
   }
 }

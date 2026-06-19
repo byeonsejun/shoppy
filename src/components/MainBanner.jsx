@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -27,7 +28,7 @@ const slides = [
 
 export default function MainBanner() {
   return (
-    <section className="mainBanner">
+    <section className={`mainBanner ${styles.heroSection}`}>
       <Swiper
         autoplay={{
           delay: 5000,
@@ -67,6 +68,20 @@ export default function MainBanner() {
           );
         })}
       </Swiper>
+
+      {/* 에디토리얼 오버레이 (슬라이드 위 고정) */}
+      <div className={styles.heroOverlay}>
+        <p className={styles.heroEyebrow}>2026 SUMMER COLLECTION</p>
+        <h2 className={styles.heroTitle}>
+          QUIET
+          <br />
+          ESSENTIALS
+        </h2>
+        <p className={styles.heroSub}>절제된 무드, 완성도 높은 데일리 워드로브</p>
+        <Link to="/shop" className={styles.heroBtn}>
+          SHOP NOW
+        </Link>
+      </div>
     </section>
   );
 }

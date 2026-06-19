@@ -6,8 +6,8 @@ import useProducts from '../hooks/useProducts';
 import FadeLoader from 'react-spinners/FadeLoader';
 
 const LazySlideProduct = lazy(() => import('./../components/SlideProduct'));
-const LazyRollingBanner = lazy(() => import('../components/RollingBanner'));
-const LazyRollingCategory = lazy(() => import('../components/RollingCategory'));
+const LazyHorizontalScroll = lazy(() => import('../components/HorizontalScroll'));
+const LazyCategoryShowcase = lazy(() => import('../components/CategoryShowcase'));
 
 export default function Home() {
   const {
@@ -28,7 +28,7 @@ export default function Home() {
       {!isLoading && (
         <>
           <Suspense fallback={null}>
-            <LazyRollingBanner />
+            <LazyCategoryShowcase />
           </Suspense>
 
           <Suspense fallback={<FadeLoader color="gray" size={25} />}>
@@ -36,7 +36,7 @@ export default function Home() {
           </Suspense>
 
           <Suspense fallback={null}>
-            <LazyRollingCategory />
+            <LazyHorizontalScroll />
           </Suspense>
 
           <Suspense fallback={<FadeLoader color="gray" size={25} />}>

@@ -44,10 +44,15 @@ export default function NewProduct() {
   };
 
   return (
-    <section className={styles.newProductSection}>
-      <h2>새로운 제품 등록</h2>
+    <section className={`pageShell ${styles.newProductSection}`}>
+      <div className="pageHeader center">
+        <span className="pageEyebrow">ADMIN</span>
+        <h2 className="pageTitle">새로운 제품 등록</h2>
+      </div>
       {success && <p className={styles.success}>✅ {success}</p>}
-      {file && <img src={URL.createObjectURL(file)} alt="미리보기" width="200" height="200" />}
+      {file && (
+        <img className={styles.preview} src={URL.createObjectURL(file)} alt="미리보기" width="200" height="200" />
+      )}
       <form className={styles.form} onSubmit={handleSubmit}>
         <input type="file" accept="image/*" name="file" required onChange={handleChange} />
         <input

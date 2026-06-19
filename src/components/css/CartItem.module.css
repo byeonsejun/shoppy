@@ -2,20 +2,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0.5rem 0;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #e7e4df;
+}
+.item:first-child {
+  border-top: 1px solid #e7e4df;
 }
 
-img {
-  width: 12rem;
+.img {
+  width: 9rem;
   height: auto;
-  border-radius: 0.5rem;
+  border-radius: 2px;
+  background-color: #efece7;
 }
 
 .innerBox {
   display: flex;
   flex: 1 1;
+  align-items: center;
   justify-content: space-between;
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 
 .productInfo {
@@ -23,66 +29,59 @@ img {
 }
 
 .title {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #111111;
 }
 
 .option {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-weight: 500;
-  color: black;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #8a857e;
+  margin: 0.2rem 0;
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111111;
+  margin-top: 0.3rem;
 }
 
 .iconBox {
-  font-size: 1.5rem;
-  line-height: 2rem;
   display: flex;
   align-items: center;
+  gap: 0.4rem;
+  font-size: 1.4rem;
+}
+.iconBox > span {
+  min-width: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .icon {
-  color: rgb(100, 99, 99);
-  margin: 0 0.25rem;
+  color: #b0aba3;
   cursor: pointer;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  transition: color 0.15s ease;
 }
-
 .icon:hover {
-  color: black;
+  color: #111111;
 }
 
 @media (max-width: 768px) {
   .img {
     width: 6rem;
   }
-
   .innerBox {
     flex-direction: column;
-  }
-
-  .productInfo {
-    padding-left: 0.5rem;
-  }
-
-  .icon:last-child {
+    align-items: flex-start;
+    gap: 0.75rem;
     margin-left: 1rem;
   }
-
   .title {
-    font-size: 0.75rem;
-    line-height: 1rem;
-  }
-
-  .option {
-    font-size: 1rem;
-    line-height: 1.25rem;
-  }
-
-  .price {
-    font-size: 1rem;
-    line-height: 1.25rem;
+    font-size: 0.9rem;
   }
 }

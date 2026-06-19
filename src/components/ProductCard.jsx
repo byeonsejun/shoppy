@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import styles from './css/ProductCard.module.css';
 import { hanldeWish } from './js/product';
 import { someLocalstorage, returnLocalStorageValue, optimizeCloudinaryUrl } from './js/util';
@@ -28,9 +29,19 @@ export default function ProductCard({ product, asListItem = true }) {
     // eslint-disable-next-line
   }, [wishFlag]);
 
+  const goToDetail = () => {
+    navigate(`/shop/${product.category}/${product.id}`, {
+      state: { product },
+    });
+  };
+
+  // product.description 에 'NEW' / 'HOT' / 'BEST' 가 들어있어 뱃지로 사용
+  const badge = product.description;
+
   const cardContent = (
     <div className={styles.cardBox}>
-      <div className={styles.productImgBox} id={showEffect ? 'show_img_effct' : ''}>
+      <div className={styles.productImgBox} id={showEffect ? 'show_img_effct' : ''} onClick={goToDetail}>
+        {badge && <span className={styles.badge}>{badge}</span>}
         <img
           className={styles.productImg}
           src={optimizeCloudinaryUrl(product.image, 320)}
@@ -38,43 +49,24 @@ export default function ProductCard({ product, asListItem = true }) {
           width="283"
           height="364"
           loading="lazy"
-          onClick={() => {
-            // 이미지 클릭 시 상품 상세 페이지로 이동
-            navigate(`/shop/${product.category}/${product.id}`, {
-              state: { product },
-            });
-          }}
         />
+        <button
+          type="button"
+          className={styles.cardWishBtt}
+          aria-label={currentWish ? '위시리스트에서 제거' : '위시리스트에 추가'}
+          onClick={(e) => {
+            e.stopPropagation();
+            addEffectImg();
+            setWishFlag(hanldeWish(product));
+          }}
+        >
+          {currentWish ? <BsHeartFill className={styles.heartOn} /> : <BsHeart />}
+        </button>
       </div>
-      <div className={styles.textBox}>
+      <div className={styles.textBox} onClick={goToDetail}>
         <h3 className={styles.h3}>{product.title}</h3>
-        <h3 className={styles.h3}>{product.title}</h3> {/* 상품 제목 */}
-        <p>{`${product.price.toLocaleString()}원`}</p>
-        <span>{product.description}</span>
+        <p className={styles.price}>{`${product.price.toLocaleString()}원`}</p>
       </div>
-      <span
-        className={styles.cardWishBtt}
-        onClick={() => {
-          addEffectImg();
-          setWishFlag(hanldeWish(product));
-        }}
-      >
-        {currentWish ? (
-          <img
-            src="http://res.cloudinary.com/daqjqq0hy/image/upload/v1705895168/bjjmssfonw18y63uqfcq.webp"
-            alt="wish_after"
-            width="15"
-            height="15"
-          />
-        ) : (
-          <img
-            src="https://res.cloudinary.com/daqjqq0hy/image/upload/v1705895072/phcpiyxmzqp9o1up6u1l.webp"
-            alt="wish_before"
-            width="15"
-            height="15"
-          />
-        )}
-      </span>
     </div>
   );
 

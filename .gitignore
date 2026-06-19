@@ -18,7 +18,6 @@
 .env.test.local
 .env.production.local
 .cursorrules
-README.md
 
 npm-debug.log*
 yarn-debug.log*

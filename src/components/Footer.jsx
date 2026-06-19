@@ -6,6 +6,9 @@ import { BsInstagram, BsYoutube } from "react-icons/bs";
 export default function Footer() {
   return (
     <footer>
+      <div className={styles.brandRow}>
+        <span className={styles.brand}>BLACKUP</span>
+      </div>
       <div className={styles.top}>
         <ul>
           <li className={styles.not}>이용약관</li>

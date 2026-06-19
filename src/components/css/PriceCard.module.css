@@ -1,30 +1,51 @@
 .priceCardWrap {
-  background-color: black;
-  color: white;
-  padding: 2rem;
-  margin: 0px 0.5rem;
-  border-radius: 1rem;
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #e7e4df;
+  color: #111111;
+  padding: 1.75rem 1rem;
+  border-radius: 4px;
   text-align: center;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: #8a857e;
+  margin-bottom: 0.6rem;
 }
 
 .price {
-  color: white;
-  font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  color: #111111;
+  font-weight: 800;
+  font-size: 1.35rem;
+  line-height: 1.4;
 }
 
+.highlight {
+  background-color: #111111;
+  border-color: #111111;
+}
+.highlight .label {
+  color: #b8b3ab;
+}
+.highlight .price {
+  color: #ffffff;
+}
 
 @media (max-width: 768px) {
   .priceCardWrap {
-    padding: 0;
-    background-color: unset;
-    color: black;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    text-align: left;
   }
-
+  .label {
+    margin-bottom: 0;
+  }
   .price {
-    color: black;
+    font-size: 1.1rem;
   }
 }

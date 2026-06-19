@@ -8,6 +8,12 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper';
 import ProductCard from './ProductCard';
 
+const SECTION_META = {
+  NEW: { eyebrow: 'NEW ARRIVALS', title: '이번 주 신상' },
+  HOT: { eyebrow: 'HOT NOW', title: '지금 인기있는' },
+  BEST: { eyebrow: 'BEST SELLERS', title: '가장 사랑받는' },
+};
+
 export default function SlideProduct({ info }) {
   const {
     productsQuery: { data: products },
@@ -19,9 +25,14 @@ export default function SlideProduct({ info }) {
     setItems(productSlideResult(info, products));
   }, [info, products]);
 
+  const meta = SECTION_META[info] || { eyebrow: `${info} LIST`, title: info };
+
   return (
     <section className={`product_slide_wrap ${info}`} aria-label={`${info} 상품 목록`}>
-      <h3>{info} LIST</h3>
+      <div className="slideHead">
+        <p className="eyebrow">{meta.eyebrow}</p>
+        <h2 className="slideTitle">{meta.title}</h2>
+      </div>
       <Swiper
         role="list"
         aria-label={`${info} 상품 슬라이드`}

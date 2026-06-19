@@ -2,8 +2,9 @@
   position: fixed;
   top: 0;
   z-index: 100;
-  background-color: white;
-  padding: 0 25px;
+  background-color: #f7f6f4;
+  border-bottom: 1px solid #e7e4df;
+  padding: 0 48px;
   margin: 0 auto;
   width: 100%;
   height: 50px;
@@ -64,17 +65,14 @@ nav,
 }
 .logo a {
   display: block;
-  width: 100px;
-  height: 19.3px;
 }
 
-.logo a::before {
-  content: '';
-  position: absolute;
-  width: 100px;
-  height: 19.3px;
-  background-image: url(https://black-up.kr/web/upload/131/image/logoB.svg);
-  background-repeat: no-repeat;
+.wordmark {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  color: #111111;
+  padding-left: 0.32em;
 }
 
 .shopList {
@@ -90,12 +88,18 @@ nav,
   line-height: 50px;
   text-transform: uppercase;
   cursor: default;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #444444;
 }
 
 .searchBox {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #444444;
   line-height: 50px;
 }
 
@@ -168,20 +172,27 @@ nav,
 .navMenu {
   align-items: center;
   justify-content: flex-end;
-  gap: 1rem;
-  font-size: 14px;
+  gap: 1.1rem;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #444444;
 }
 
 .loginButton {
-  border-radius: 0.125rem;
-  background-color: black;
+  border-radius: 2px;
+  background-color: #ff4d2e;
   color: white;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   padding: 0.5rem 1rem;
   opacity: 1;
+  transition: filter 0.2s ease;
 }
 
 .loginButton:hover {
-  filter: brightness(50);
+  filter: brightness(0.92);
 }
 
 @media (max-width: 768px) {

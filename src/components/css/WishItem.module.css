@@ -1,21 +1,27 @@
 .item {
   display: flex;
   justify-content: space-between;
-  margin: 0.5rem 0;
   align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #e7e4df;
+}
+.item:first-child {
+  border-top: 1px solid #e7e4df;
 }
 
 .wishImg {
-  width: 12rem;
+  width: 9rem;
   height: auto;
   cursor: pointer;
+  border-radius: 2px;
+  background-color: #efece7;
 }
 
 .wishInfoBox {
   display: flex;
   flex: 1 1;
-  justify-content: space-between;
-  margin-left: 1rem;
+  align-items: center;
+  margin-left: 1.5rem;
 }
 
 .wishInfoBoxInner {
@@ -23,26 +29,46 @@
 }
 
 .category {
-  color: black;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #8a857e;
+  margin-bottom: 0.4rem;
 }
 
 .title {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #111111;
+}
+
+.wishInfoBoxInner p:last-child {
+  margin-top: 0.4rem;
+  font-weight: 700;
+  color: #111111;
 }
 
 .cancel {
-  font-weight: 700;
+  font-weight: 400;
   cursor: pointer;
   font-size: 1.2rem;
+  color: #b0aba3;
+  padding: 0 0.5rem;
+  transition: color 0.15s ease;
+}
+.cancel:hover {
+  color: #111111;
 }
 
 @media (max-width: 768px) {
   .wishImg {
     width: 6rem;
   }
+  .wishInfoBox {
+    margin-left: 1rem;
+  }
   .title {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    font-size: 0.9rem;
   }
 }

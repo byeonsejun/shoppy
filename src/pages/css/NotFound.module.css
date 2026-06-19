@@ -1,7 +1,7 @@
 .pageWrap {
   text-align: center;
-  max-width: 1200px;
-  padding: 5rem;
+  max-width: 760px;
+  padding: 6rem 2rem 8rem;
   margin: 0 auto;
 }
 
@@ -15,60 +15,53 @@
 }
 
 .pageWrap img {
-  width: 604px;
-  margin: 0 auto;
+  width: 420px;
+  max-width: 80%;
+  margin: 0 auto 2rem;
 }
 
 .pageWrap strong {
-  font-size: 3rem;
-  line-height: 5rem;
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: #111111;
 }
 
 .pageWrap p {
-  font-size: 2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #6b6760;
   margin-top: 1rem;
 }
 
 .pageWrap button {
   display: inline-block;
-  width: 180px;
-  padding: 13px 0 19px;
-  margin-top: 36px;
-  border-radius: 30px;
-  background: #eee;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 28px;
-  letter-spacing: -.5px;
-  color: #000;
+  min-width: 180px;
+  padding: 1rem 2rem;
+  margin-top: 2.5rem;
+  border-radius: 2px;
+  background: #111111;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
-
+.pageWrap button:hover {
+  opacity: 0.85;
+}
 
 @media (max-width: 768px) {
   .pageWrap {
-    padding: 2rem;
+    padding: 3rem 1.5rem 5rem;
   }
-
-  .pageWrap img {
-    width: 362px;
-    max-width: 100%;
-    margin-bottom: 25px;
-  }
-
   .pageWrap strong {
-    font-size: 26px;
-    line-height: 32px;
+    font-size: 1.5rem;
   }
-
   .pageWrap p {
-    font-size: 18px;
-  }
-
-  .pageWrap button {
-    width: 150px;
-    padding: 10px 0 14px;
-    border-radius: 25px;
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 0.9rem;
   }
 }

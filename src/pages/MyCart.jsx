@@ -29,9 +29,12 @@ export default function MyCart() {
     );
 
   return (
-    <section className={styles.section}>
-      <h2 className={styles.h2}>My Cart</h2>
-      {!hasProducts && <p className={styles.notProduct}>My Cart에 상품이 없습니다.</p>}
+    <section className={`pageShell ${styles.section}`}>
+      <div className="pageHeader center">
+        <span className="pageEyebrow">SHOPPING BAG</span>
+        <h2 className="pageTitle">My Cart</h2>
+      </div>
+      {!hasProducts && <p className={styles.notProduct}>장바구니에 담긴 상품이 없습니다.</p>}
       {hasProducts && (
         <>
           <ul className={styles.ul}>
@@ -45,9 +48,11 @@ export default function MyCart() {
             <BsFillPlusCircleFill className={styles.shrink} />
             <PriceCard text="배송비" price={SHIPPING} />
             <FaEquals className={styles.shrink} />
-            <PriceCard text="총가격" price={totalPrice + SHIPPING} />
+            <PriceCard text="총 결제금액" price={totalPrice + SHIPPING} highlight />
           </div>
-          <Button text="주문하기" />
+          <div className={styles.orderBtn}>
+            <Button text="주문하기" fullWidth />
+          </div>
         </>
       )}
     </section>

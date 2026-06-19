@@ -73,19 +73,23 @@ export default function ProductDetail() {
     );
 
   return (
-    <>
-      <h2 className={styles.h2}>{category}</h2>
+    <div className="pageShell">
+      <div className="pageHeader">
+        <span className="pageEyebrow">PRODUCT</span>
+        <h2 className="pageTitle">{category}</h2>
+      </div>
       <section className={styles.section}>
         <div className={styles.imgBox}>
           <img src={image} alt={title} width="600" height="600" loading="eager" decoding="async" />
         </div>
         <div className={styles.selectBox}>
+          <p className={styles.cat}>{category}</p>
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.price}>{price.toLocaleString()}원</p>
           <p className={styles.description}>{description}</p>
           <div className={styles.option}>
             <label className={styles.label} htmlFor="select">
-              옵션:
+              옵션
             </label>
             <select id="select" className={styles.select} onChange={handleSelect} value={selected}>
               {options && options.map((option, index) => <option key={index}>{option}</option>)}
@@ -96,10 +100,10 @@ export default function ProductDetail() {
               <BsFillCartCheckFill /> {success}
             </p>
           )}
-          <Button text="장바구니에 추가" onClick={handleClick} />
+          <Button text="장바구니에 추가" onClick={handleClick} fullWidth />
           {popUp && <PopUp />}
         </div>
       </section>
-    </>
+    </div>
   );
 }

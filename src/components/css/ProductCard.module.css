@@ -2,23 +2,7 @@
   position: relative;
 }
 
-.cardWishBtt {
-  position: absolute;
-  right: 0.5rem;
-  bottom: 3.5rem;
-  z-index: 10;
-  cursor: pointer;
-  padding: 0.25rem;
-}
-
-.cardWishBtt img {
-  width: 15px;
-  height: 15px;
-  border-radius: 0;
-}
-
 .li {
-  overflow: hidden;
   width: 100%;
   max-width: 452.5px;
 }
@@ -28,6 +12,9 @@
   max-width: 452.5px;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
+  background-color: #efece7;
+  aspect-ratio: 283 / 364;
 }
 .productImgBox::after {
   transition: height 0.3s ease-in-out;
@@ -45,36 +32,87 @@
 }
 .productImg {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.productImgBox:hover .productImg {
+  transform: scale(1.05);
+}
+
+/* NEW / HOT / BEST 뱃지 */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  background-color: #111111;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 9px;
+}
+
+/* 위시 버튼 */
+.cardWishBtt {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 10;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #555555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.2s ease;
+}
+.productImgBox:hover .cardWishBtt {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cardWishBtt:hover {
+  color: #111111;
+}
+.heartOn {
+  color: #ff4d2e;
 }
 
 .textBox {
-  margin-top: 0.5rem;
-  padding: 0 2rem 0 0.5rem;
-  font-size: 1rem;
-  line-height: 1.75rem;
+  margin-top: 0.85rem;
+  padding: 0 0.25rem;
+  cursor: pointer;
 }
 
 .h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #111111;
+  line-height: 1.4;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.textBox span {
-  margin-bottom: 0.5rem;
-  color: gray;
+.price {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111111;
 }
 
-@media (max-width: 1200px) {
-  .cardBox {
-    /* display: flex; */
-    /* justify-content: center; */
-  }
-}
-
-@media (max-width: 480px) {
+@media (hover: none) {
+  /* 터치 기기에서는 위시 버튼 항상 노출 */
   .cardWishBtt {
-    bottom: 2rem;
+    opacity: 1;
+    transform: none;
   }
 }

@@ -55,58 +55,31 @@ export default function MyAccount() {
   // }
 
   return (
-    <section>
-      <h2>My Account</h2>
-      <br></br>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        {user && <input type="text" name="name" readOnly placeholder={user.displayName} onChange={handleChange} />}
+    <section className={`pageShell ${styles.section}`}>
+      <div className="pageHeader center">
+        <span className="pageEyebrow">MY PAGE</span>
+        <h2 className="pageTitle">My Account</h2>
+      </div>
 
-        {/* <input
-          type="number"
-          name="price"
-          value={product.price ?? ""}
-          placeholder="가격"
-          required
-          onChange={handleChange}
-        />
-        <select
-          className={styles.category}
-          name="category"
-          // value={product.category ?? ""}
-          placeholder="카테고리"
-          required
-          onChange={handleChange}
-        >
-          <option value="">카테고리 선택</option>
-          {categorys.map((category) => {
-            return (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            );
-          })}
-        </select>
-        <input
-          type="text"
-          name="description"
-          value={product.description ?? ""}
-          placeholder="제품 설명"
-          required
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="options"
-          value={product.options ?? ""}
-          placeholder="옵션들(콤마(,)로 구분)"
-          required
-          onChange={handleChange}
-        /> */}
-        {/* <Button
-          text={isUploading ? "업로드중..." : "제품 등록하기"}
-          disabled={isUploading}
-        /> */}
-      </form>
+      <div className={styles.card}>
+        {user && (
+          <div className={styles.profile}>
+            {user.photoURL && (
+              <img className={styles.avatar} src={user.photoURL} alt={user.displayName} referrerPolicy="no-referrer" />
+            )}
+            <div>
+              <p className={styles.name}>{user.displayName}</p>
+              {user.email && <p className={styles.email}>{user.email}</p>}
+            </div>
+          </div>
+        )}
+
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <label className={styles.label}>이름</label>
+          {user && <input type="text" name="name" readOnly defaultValue={user.displayName} onChange={handleChange} />}
+          <Button text="정보 수정" fullWidth />
+        </form>
+      </div>
     </section>
   );
 }

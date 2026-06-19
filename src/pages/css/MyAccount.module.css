@@ -1,0 +1,58 @@
+.section {
+  margin-bottom: 120px;
+}
+
+.card {
+  max-width: 480px;
+  margin: 0 auto;
+  border: 1px solid #e7e4df;
+  border-radius: 6px;
+  background-color: #ffffff;
+  padding: 2rem;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e7e4df;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  object-fit: cover;
+  background-color: #efece7;
+}
+
+.name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111111;
+}
+
+.email {
+  font-size: 0.85rem;
+  color: #8a857e;
+  margin-top: 0.2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #6b6760;
+}
+
+.form button {
+  margin-top: 0.75rem;
+}

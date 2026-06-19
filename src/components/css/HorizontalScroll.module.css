@@ -1,0 +1,104 @@
+.wrap {
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: 50px; /* 고정 헤더 높이만큼 */
+  height: calc(100vh - 50px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f7f6f4;
+}
+
+.head {
+  position: absolute;
+  top: 40px;
+  left: 48px;
+  z-index: 2;
+}
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: #8a857e;
+  margin-bottom: 0.5rem;
+}
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: #111111;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  /* gap: 28px; */
+  padding: 0 48px;
+  width: max-content;
+  will-change: transform;
+}
+
+.panel {
+  position: relative;
+  flex: 0 0 auto;
+  width: 42vw;
+  max-width: 640px;
+  height: 64vh;
+  margin: 0;
+  overflow: hidden;
+  background-color: #efece7;
+}
+.panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.index {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* 모바일: 핀 고정 해제 → 일반 가로 스와이프 */
+@media (max-width: 768px) {
+  .wrap {
+    height: auto !important;
+  }
+  .sticky {
+    position: static;
+    height: auto;
+    overflow: visible;
+    padding: 0;
+  }
+  .head {
+    position: static;
+    padding: 0 16px;
+    margin-bottom: 20px;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+  .track {
+    transform: none !important;
+    gap: 14px;
+    padding: 0 16px 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  .panel {
+    width: 78vw;
+    height: 60vh;
+    scroll-snap-align: start;
+  }
+}
