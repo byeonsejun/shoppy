@@ -81,7 +81,7 @@ export default function HorizontalScroll() {
       <div className={styles.sticky}>
         <div className={styles.head}>
           <p className={styles.eyebrow}>BLACKUP STORY</p>
-          <h2 className={styles.title}>Lookbook</h2>
+          {/* <h2 className={styles.title}>Lookbook</h2> */}
         </div>
         <div className={styles.track} ref={trackRef}>
           {IMAGES.map((src, idx) => (
