@@ -5,7 +5,7 @@ import styles from './css/ProductCard.module.css';
 import { hanldeWish } from './js/product';
 import { someLocalstorage, returnLocalStorageValue, optimizeCloudinaryUrl } from './js/util';
 
-export default function ProductCard({ product, asListItem = true }) {
+export default function ProductCard({ product, asListItem = true, priority = false }) {
   const navigate = useNavigate();
   const [currentWish, setCurrentWish] = useState(false);
   const [showEffect, setShowEffect] = useState(false);
@@ -48,7 +48,8 @@ export default function ProductCard({ product, asListItem = true }) {
           alt={product.title}
           width="283"
           height="364"
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchpriority={priority ? 'high' : 'auto'}
         />
         <button
           type="button"

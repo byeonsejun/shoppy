@@ -86,7 +86,6 @@ export default function Navbar() {
               e.preventDefault();
               searchOnOff(e);
             }}
-            aria-label="검색 열기"
           >
             SEARCH
           </div>
@@ -143,7 +142,6 @@ export default function Navbar() {
             <button
               className={styles.loginButton}
               onClick={() => setPopUp(true)}
-              aria-label="로그인"
             >
               Login
             </button>
@@ -154,7 +152,6 @@ export default function Navbar() {
                 await logout();
                 menuBttFn(true);
               }}
-              aria-label="로그아웃"
             >
               Logout
             </button>
