@@ -81,15 +81,19 @@ export default function Products() {
       {error && <p>{error}</p>}
       <PageNav sliceUrl={sliceUrl} />
       <div className={styles.sortBox}>
-        <label className={styles.label} htmlFor="select"></label>
+        <label className={`${styles.label} sr-only`} htmlFor="select">
+          상품 정렬
+        </label>
         <select id="select" className={styles.select} onChange={handleSelectFilter} value={selected}>
           {sortSelect && sortSelect.map((option, index) => <option key={index}>{option}</option>)}
         </select>
       </div>
+      <h2 className="sr-only">상품 목록</h2>
       <ul className={styles.ul}>
         {nowProducts &&
-          nowProducts.map((product) => {
-            return <ProductCard key={product.id} product={product} />;
+          nowProducts.map((product, index) => {
+            // 첫 화면에 보이는 카드는 즉시 로드 (LCP 개선)
+            return <ProductCard key={product.id} product={product} priority={index < 8} />;
           })}
         {nowProducts && nowProducts.length === 0 && <span>찾으시는 상품이 없습니다</span>}
       </ul>

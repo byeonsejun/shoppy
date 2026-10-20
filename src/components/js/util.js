@@ -28,5 +28,5 @@ export const optimizeCloudinaryUrl = (url, width) => {
   if (!url || !url.includes('res.cloudinary.com')) return url;
   const parts = url.split('/upload/');
   if (parts.length < 2) return url;
-  return `${parts[0]}/upload/w_${width},f_auto,q_auto/${parts[1]}`;
+  return `${parts[0].replace(/^http:/, 'https:')}/upload/w_${width},f_auto,q_auto/${parts[1]}`;
 };
