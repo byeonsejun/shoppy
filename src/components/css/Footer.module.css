@@ -77,6 +77,12 @@ footer li.not::before {
   flex-basis: 70%;
 }
 
+.copyright {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #2a2a2a;
+}
+
 @media (max-width: 1200px) {
   .bottom {
     flex-direction: column;
@@ -103,5 +109,8 @@ footer li.not::before {
   }
   footer li::before {
     display: none;
+  }
+  .copyright {
+    text-align: center;
   }
 }
