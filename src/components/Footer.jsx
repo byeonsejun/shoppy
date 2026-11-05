@@ -36,6 +36,7 @@ export default function Footer() {
           <li>ADDRESS: 03992  서울특별시 마포구 동교로23길 32-22 (동교동)JC동교빌딩 4층</li>
         </ul>
       </div>
+      <p className={styles.copyright}>{`Copyright © ${new Date().getFullYear()} BYUN SEJUN. All Rights Reserved.`}</p>
     </footer>
   );
 }
